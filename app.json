@@ -1,0 +1,56 @@
+{
+  "expo": {
+    "plugins": [
+      [
+        "@react-native-tvos/config-tv",
+        {
+          "androidTVBanner": "./assets/tv_icons/icon-400x240.png",
+          "androidTVIcon": "./assets/tv_icons/icon-760x760.png",
+          "appleTVImages": {
+            "icon": "./assets/tv_icons/icon-1280x768.png",
+            "iconSmall": "./assets/tv_icons/icon-400x240.png",
+            "iconSmall2x": "./assets/tv_icons/icon-800x480.png",
+            "topShelf": "./assets/tv_icons/icon-1920x720.png",
+            "topShelf2x": "./assets/tv_icons/icon-3840x1440.png",
+            "topShelfWide": "./assets/tv_icons/icon-2320x720.png",
+            "topShelfWide2x": "./assets/tv_icons/icon-4640x1440.png"
+          }
+        }
+      ],
+      [
+        "expo-build-properties",
+        {
+          "ios": {
+            "useFrameworks": "static"
+          }
+        }
+      ],
+      "expo-router",
+      "expo-font",
+      "expo-video",
+      "react-native-bottom-tabs"
+    ],
+    "experiments": {
+      "typedRoutes": true
+    },
+    "name": "ExpoRouterTV",
+    "slug": "ExpoRouterTV",
+    "scheme": "exporoutertv",
+    "icon": "./assets/tv_icons/icon-760x760.png",
+    "version": "1.0.0",
+    "extra": {
+      "router": {
+        "origin": false
+      }
+    },
+    "splash": {
+      "image": "./assets/tv_icons/icon-1280x768.png"
+    },
+    "android": {
+      "newArchEnabled": true
+    },
+    "ios": {
+      "newArchEnabled": true
+    }
+  }
+}
