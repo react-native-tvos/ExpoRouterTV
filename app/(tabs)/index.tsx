@@ -8,8 +8,11 @@ import { ThemedView } from '@/components/ThemedView';
 import { Switch, Slider, Button, Picker, Section } from '@expo/ui';
 import { useState } from 'react';
 
+const pickerOptions = ['one', 'two', 'three'];
+
 export default function HomeScreen() {
   const [switchValue, setSwitchValue] = useState(false);
+  const [pickerIndex, setPickerIndex] = useState(0);
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
@@ -46,8 +49,12 @@ export default function HomeScreen() {
         <ThemedView style={styles.stepContainer}>
           <ThemedText>Picker</ThemedText>
           <Picker
-            options={['one', 'two', 'three']}
-            selectedIndex={1}
+            options={pickerOptions}
+            selectedIndex={pickerIndex}
+            onOptionSelected={(event) => {
+              console.log(`Selected index ${event.nativeEvent.index}`);
+              setPickerIndex(event.nativeEvent.index);
+            }}
             variant="segmented"
           />
         </ThemedView>
