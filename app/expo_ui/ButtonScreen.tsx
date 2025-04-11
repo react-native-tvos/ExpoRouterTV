@@ -1,6 +1,7 @@
 import { Button } from '@expo/ui/Button';
 import * as React from 'react';
 import { Platform, ScrollView, StyleSheet } from 'react-native';
+import { scale } from 'react-native-size-matters';
 
 import { Page, Section } from '@/components/UI/Page';
 
@@ -138,8 +139,8 @@ export default function UIScreen() {
 
 const styles = StyleSheet.create({
   button: {
-    width: 150,
-    margin: 5,
+    width: scale(150),
+    margin: scale(5),
     overflow: 'visible',
   },
   stretch: {

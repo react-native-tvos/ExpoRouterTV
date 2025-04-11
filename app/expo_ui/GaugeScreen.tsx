@@ -1,6 +1,7 @@
 import { Gauge } from '@expo/ui/Gauge';
 import * as React from 'react';
 import { PlatformColor } from 'react-native';
+import { scale } from 'react-native-size-matters';
 
 import { Page, Section } from '@/components/UI/Page';
 
@@ -25,7 +26,7 @@ export default function GaugeScreen() {
           min={{ value: 0, label: '0', color: PlatformColor('systemGreen') }}
           max={{ value: 100, label: '100', color: PlatformColor('systemRed') }}
           color={COLORS}
-          style={{ marginTop: 16 }}
+          style={{ marginTop: scale(16) }}
         />
       </Section>
       <Section title="Circular">
@@ -38,7 +39,7 @@ export default function GaugeScreen() {
           current={{ value: 0.7, label: '70%' }}
           color={[...COLORS].reverse()}
           type="circularCapacity"
-          style={{ marginTop: 16 }}
+          style={{ marginTop: scale(16) }}
         />
       </Section>
       <Section title="Linear">
@@ -47,14 +48,14 @@ export default function GaugeScreen() {
           current={{ value: 0.2, label: '20%' }}
           color={COLORS}
           type="linear"
-          style={{ marginTop: 16 }}
+          style={{ marginTop: scale(16) }}
         />
         <Gauge
           label="linearCapacity label"
           current={{ value: 0.7, label: '70%' }}
           color={COLORS}
           type="linearCapacity"
-          style={{ marginTop: 16 }}
+          style={{ marginTop: scale(16) }}
         />
       </Section>
     </Page>

@@ -16,7 +16,7 @@ const videoSource =
 
 export default function VideoTest() {
   const styles = useVideoStyles();
-  const ref: any = useRef<VideoView>();
+  const ref: any = useRef<VideoView>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [videoStatus, setVideoStatus] = useState<VideoPlayerStatus>('idle');
   const [fractionComplete, setFractionComplete] = useState(0);

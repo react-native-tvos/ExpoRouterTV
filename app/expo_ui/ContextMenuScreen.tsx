@@ -5,8 +5,9 @@ import { Switch } from '@expo/ui/Switch';
 import { useVideoPlayer, VideoView } from 'expo-video';
 import * as React from 'react';
 import { View, StyleSheet, Platform, Text } from 'react-native';
+import { scale } from 'react-native-size-matters';
 
-import { Section } from '@/components/UI/Page';
+import { Page, Section } from '@/components/UI/Page';
 
 const videoLink =
   'https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/360/Big_Buck_Bunny_360_10s_2MB.mp4';
@@ -23,7 +24,7 @@ export default function ContextMenuScreen() {
   });
 
   return (
-    <View>
+    <Page>
       <Section title="Single-Press Context Menu" row>
         <ContextMenu style={{ width: 150, height: 50 }}>
           <ContextMenu.Items>
@@ -155,7 +156,7 @@ export default function ContextMenuScreen() {
           </ContextMenu>
         </Section>
       )}
-    </View>
+    </Page>
   );
 }
 
@@ -165,17 +166,17 @@ ContextMenuScreen.navigationOptions = {
 
 const styles = StyleSheet.create({
   menuIcon: {
-    width: 32,
-    height: 32,
+    width: scale(32),
+    height: scale(32),
   },
   longPressMenu: {
-    width: 200,
-    height: 200,
+    width: scale(200),
+    height: scale(200),
   },
   preview: {
-    width: 300,
-    height: 200,
-    padding: 20,
+    width: scale(300),
+    height: scale(200),
+    padding: scale(20),
     backgroundColor: '#ffeeee',
   },
 });

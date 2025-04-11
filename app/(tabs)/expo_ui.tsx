@@ -9,6 +9,18 @@ import { Href, useRouter } from 'expo-router';
 
 const demos = [
   {
+    name: 'Button',
+    route: '/expo_ui/ButtonScreen',
+  },
+  {
+    name: 'Context Menu',
+    route: '/expo_ui/ContextMenuScreen',
+  },
+  {
+    name: 'Gauge',
+    route: '/expo_ui/GaugeScreen',
+  },
+  {
     name: 'List',
     route: '/expo_ui/ListScreen',
   },
@@ -21,16 +33,16 @@ const demos = [
     route: '/expo_ui/ProgressScreen',
   },
   {
+    name: 'Section',
+    route: '/expo_ui/SectionScreen',
+  },
+  {
     name: 'Switch',
     route: '/expo_ui/SwitchScreen',
   },
   {
     name: 'Text Input',
     route: '/expo_ui/TextInputScreen',
-  },
-  {
-    name: 'Section',
-    route: '/expo_ui/SectionScreen',
   },
 ];
 

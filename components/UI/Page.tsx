@@ -5,12 +5,13 @@ import { ThemedText } from '../ThemedText';
 import { ThemedView } from '../ThemedView';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useThemeColor } from '@/hooks/useThemeColor';
+import { scale } from 'react-native-size-matters';
 
 export function Page({ children }: PropsWithChildren) {
   const styles = useStyles();
   return (
     <View style={styles.page}>
-      <SafeAreaView>{children}</SafeAreaView>
+      <SafeAreaView style={styles.page}>{children}</SafeAreaView>
     </View>
   );
 }
@@ -18,7 +19,11 @@ export function Page({ children }: PropsWithChildren) {
 const ScrollPage = ({ children }: PropsWithChildren) => {
   const styles = useStyles();
   return (
-    <ScrollView style={[styles.page, styles.scrollPage]}>{children}</ScrollView>
+    <Page>
+      <ScrollView style={[styles.page, styles.scrollPage]}>
+        {children}
+      </ScrollView>
+    </Page>
   );
 };
 
@@ -41,8 +46,8 @@ const useStyles = () => {
   const backgroundColor = useThemeColor({}, 'background');
   return StyleSheet.create({
     page: {
-      paddingHorizontal: 12,
-      paddingBottom: 12,
+      paddingHorizontal: scale(12),
+      paddingBottom: scale(12),
       backgroundColor,
       flex: 1,
       width: '100%',
@@ -54,17 +59,17 @@ const useStyles = () => {
     section: {
       borderBottomColor: 'rgba(0,0,0,0.1)',
       borderBottomWidth: StyleSheet.hairlineWidth,
-      paddingBottom: 8,
+      paddingBottom: scale(8),
     },
     sectionHeader: {
-      marginTop: 8,
+      marginTop: scale(8),
     },
   });
 };
 const styles = StyleSheet.create({
   page: {
-    paddingHorizontal: 12,
-    paddingBottom: 12,
+    paddingHorizontal: scale(12),
+    paddingBottom: scale(12),
   },
   scrollPage: {
     flex: 1,
@@ -72,10 +77,10 @@ const styles = StyleSheet.create({
   section: {
     borderBottomColor: 'rgba(0,0,0,0.1)',
     borderBottomWidth: StyleSheet.hairlineWidth,
-    paddingBottom: 8,
+    paddingBottom: scale(8),
   },
   sectionHeader: {
-    marginTop: 8,
+    marginTop: scale(8),
   },
 });
 
