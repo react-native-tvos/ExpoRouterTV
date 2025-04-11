@@ -1,5 +1,8 @@
 import { version as rnVersion } from 'react-native/package.json';
 import { version as routerVersion } from 'expo-router/package.json';
+import { version as expoVersion } from 'expo/package.json';
+import { version as uiVersion } from '@expo/ui/package.json';
+
 import { Platform } from 'react-native';
 
 const hermesVersion = (global as any)?.HermesInternal?.getRuntimeProperties();
@@ -12,9 +15,11 @@ const uiManager =
     : 'Paper';
 
 export const reactNativeInfo = {
+  expoVersion,
+  uiVersion,
   rnVersion,
   routerVersion,
   hermesVersion,
-  uiManager,
+  newArchitecture: uiManager === 'Fabric',
   jsEngine,
 };
