@@ -6,7 +6,7 @@ import { Switch } from '@expo/ui/Switch';
 import * as React from 'react';
 
 export default function ListScreen() {
-  const [color, setColor] = React.useState<string>('blue');
+  const [color] = React.useState<string>('blue');
   const [selectedIndex, setSelectedIndex] = React.useState<number | null>(0);
   const data = [
     { text: 'Good Morning', systemImage: 'sun.max.fill' },
