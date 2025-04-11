@@ -269,7 +269,7 @@ const useDemoStyles = function () {
     },
     logText: {
       maxHeight: scale(150),
-      minWidth: scale(200),
+      width: scale(100),
       fontSize: scale(5),
       lineHeight: scale(7),
       alignItems: 'flex-end',

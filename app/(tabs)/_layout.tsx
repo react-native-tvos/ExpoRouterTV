@@ -16,8 +16,9 @@ export default function TabLayout() {
     <Tabs
       tabBarActiveTintColor={colors.tabIconSelected}
       tabBarInactiveTintColor={colors.tabIconDefault}
-      barTintColor={colors.background}
+      tabBarStyle={{ backgroundColor: colors.background }}
       rippleColor={colors.tint}
+      translucent
       labeled={true}
     >
       <Tabs.Screen
