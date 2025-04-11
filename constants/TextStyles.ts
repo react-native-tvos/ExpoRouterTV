@@ -29,7 +29,7 @@ export const textStyles = function (linkColor: string): {
       fontWeight: 'bold',
     },
     link: {
-      lineHeight: scale(8),
+      lineHeight: scale(12),
       fontSize: scale(10),
       color: linkColor,
     },

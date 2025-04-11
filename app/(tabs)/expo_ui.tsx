@@ -1,12 +1,10 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { StyleSheet, Platform, Pressable } from 'react-native';
+import { ScrollView, StyleSheet, Pressable } from 'react-native';
 import { scale } from 'react-native-size-matters';
 
-import { Collapsible } from '@/components/Collapsible';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
-import { EventHandlingDemo } from '@/components/EventHandlingDemo';
 import { Href, useRouter } from 'expo-router';
 
 const demos = [
@@ -19,16 +17,8 @@ const demos = [
     route: '/expo_ui/PickerScreen',
   },
   {
-    name: 'Color Picker',
-    route: '/expo_ui/ColorPickerScreen',
-  },
-  {
     name: 'Progress',
     route: '/expo_ui/ProgressScreen',
-  },
-  {
-    name: 'Slider',
-    route: '/expo_ui/SliderScreen',
   },
   {
     name: 'Switch',
@@ -61,16 +51,22 @@ export default function UIDemoScreen() {
         <ThemedText type="title">Expo UI demo</ThemedText>
       </ThemedView>
       <ThemedText>Demos of Expo UI components</ThemedText>
-      {demos.map((demo) => (
-        <Pressable
-          onPress={() => {
-            router.push(demo.route as Href);
-          }}
-        >
-          <ThemedText type="link">{demo.route}</ThemedText>
-          <ThemedText>{demo.name}</ThemedText>
-        </Pressable>
-      ))}
+      <ScrollView>
+        {demos.map((demo) => (
+          <Pressable
+            style={({ pressed, focused }) => ({
+              opacity: pressed || focused ? 0.6 : 1.0,
+              margin: scale(2),
+            })}
+            key={demo.name}
+            onPress={() => {
+              router.push(demo.route as Href);
+            }}
+          >
+            <ThemedText type="link">{demo.name}</ThemedText>
+          </Pressable>
+        ))}
+      </ScrollView>
     </ParallaxScrollView>
   );
 }

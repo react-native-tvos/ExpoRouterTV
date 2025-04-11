@@ -3,14 +3,24 @@ import { PropsWithChildren } from 'react';
 import { StyleSheet, View, ScrollView } from 'react-native';
 import { ThemedText } from '../ThemedText';
 import { ThemedView } from '../ThemedView';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { useThemeColor } from '@/hooks/useThemeColor';
 
 export function Page({ children }: PropsWithChildren) {
-  return <View style={styles.page}>{children}</View>;
+  const styles = useStyles();
+  return (
+    <View style={styles.page}>
+      <SafeAreaView>{children}</SafeAreaView>
+    </View>
+  );
 }
 
-const ScrollPage = ({ children }: PropsWithChildren) => (
-  <ScrollView style={[styles.page, styles.scrollPage]}>{children}</ScrollView>
-);
+const ScrollPage = ({ children }: PropsWithChildren) => {
+  const styles = useStyles();
+  return (
+    <ScrollView style={[styles.page, styles.scrollPage]}>{children}</ScrollView>
+  );
+};
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -27,6 +37,30 @@ const Section = ({ title, children, row, gap }: SectionProps) => (
   </ThemedView>
 );
 
+const useStyles = () => {
+  const backgroundColor = useThemeColor({}, 'background');
+  return StyleSheet.create({
+    page: {
+      paddingHorizontal: 12,
+      paddingBottom: 12,
+      backgroundColor,
+      flex: 1,
+      width: '100%',
+    },
+    scrollPage: {
+      flex: 1,
+      backgroundColor,
+    },
+    section: {
+      borderBottomColor: 'rgba(0,0,0,0.1)',
+      borderBottomWidth: StyleSheet.hairlineWidth,
+      paddingBottom: 8,
+    },
+    sectionHeader: {
+      marginTop: 8,
+    },
+  });
+};
 const styles = StyleSheet.create({
   page: {
     paddingHorizontal: 12,
