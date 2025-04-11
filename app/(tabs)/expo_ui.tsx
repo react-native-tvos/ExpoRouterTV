@@ -7,7 +7,7 @@ import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import { Href, useRouter } from 'expo-router';
 
-const demos = [
+export const demos = [
   {
     name: 'Button',
     route: '/expo_ui/ButtonScreen',

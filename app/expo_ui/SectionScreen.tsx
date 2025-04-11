@@ -1,5 +1,4 @@
 import { Button } from '@expo/ui/Button';
-import { ColorPicker } from '@expo/ui/ColorPicker';
 import { Picker } from '@expo/ui/Picker';
 import { Section } from '@expo/ui/Section';
 import { Slider } from '@expo/ui/Slider';
@@ -17,12 +16,10 @@ export default function SectionScreen() {
     <Section title="My form Section" style={{ flex: 1 }}>
       <Text style={{ fontSize: 17 }}>Some text!</Text>
       <Button onPress={() => alert('Clicked!')}>I'm a button</Button>
-      <Switch value={switchValue} label="This is a switch" onValueChange={setSwitchValue} />
-      <ColorPicker
-        label="Select a color"
-        selection={color}
-        supportsOpacity
-        onValueChanged={setColor}
+      <Switch
+        value={switchValue}
+        label="This is a switch"
+        onValueChange={setSwitchValue}
       />
       <Picker
         label="Menu picker"

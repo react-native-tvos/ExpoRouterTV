@@ -1,5 +1,4 @@
 import { Button } from '@expo/ui/Button';
-import { ColorPicker } from '@expo/ui/ColorPicker';
 import { Label } from '@expo/ui/Label';
 import { List, ListStyle } from '@expo/ui/List';
 import { Picker } from '@expo/ui/Picker';
@@ -33,7 +32,9 @@ export default function ListScreen() {
   return (
     <>
       <List listStyle="automatic">
-        <Button onPress={() => setEditModeEnabled(!editModeEnabled)}>Toggle Edit</Button>
+        <Button onPress={() => setEditModeEnabled(!editModeEnabled)}>
+          Toggle Edit
+        </Button>
         <Switch
           value={selectEnabled}
           label="Select enabled"
@@ -61,16 +62,6 @@ export default function ListScreen() {
             height: 100,
           }}
         />
-        <ColorPicker
-          label="Item icon color"
-          selection={color}
-          supportsOpacity
-          onValueChanged={setColor}
-          style={{
-            width: 300,
-            height: 100,
-          }}
-        />
         <Picker
           label="List style"
           options={listStyleOptions}
@@ -89,16 +80,26 @@ export default function ListScreen() {
       <List
         scrollEnabled={false}
         editModeEnabled={editModeEnabled}
-        onSelectionChange={(items) => alert(`indexes of selected items: ${items.join(', ')}`)}
+        onSelectionChange={(items) =>
+          alert(`indexes of selected items: ${items.join(', ')}`)
+        }
         moveEnabled={moveEnabled}
-        onMoveItem={(from, to) => alert(`moved item at index ${from} to index ${to}`)}
+        onMoveItem={(from, to) =>
+          alert(`moved item at index ${from} to index ${to}`)
+        }
         onDeleteItem={(item) => alert(`deleted item at index: ${item}`)}
         style={{ flex: 1 }}
         listStyle={listStyleOptions[selectedIndex ?? 0]}
         deleteEnabled={deleteEnabled}
-        selectEnabled={selectEnabled}>
+        selectEnabled={selectEnabled}
+      >
         {data.map((item, index) => (
-          <Label key={index} title={item.text} systemImage={item.systemImage} color={color} />
+          <Label
+            key={index}
+            title={item.text}
+            systemImage={item.systemImage}
+            color={color}
+          />
         ))}
       </List>
     </>
