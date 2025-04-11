@@ -2,7 +2,7 @@ import { Gauge } from '@expo/ui/Gauge';
 import * as React from 'react';
 import { PlatformColor } from 'react-native';
 
-import { Page, Section } from '../../components/Page';
+import { Page, Section } from '@/components/UI/Page';
 
 const COLORS = [
   PlatformColor('systemGreen'),
@@ -17,7 +17,11 @@ export default function GaugeScreen() {
         <Gauge label="label" current={{ value: 0.2 }} />
         <Gauge
           label="Usage"
-          current={{ value: 70, label: '70%', color: PlatformColor('systemYellow') }}
+          current={{
+            value: 70,
+            label: '70%',
+            color: PlatformColor('systemYellow'),
+          }}
           min={{ value: 0, label: '0', color: PlatformColor('systemGreen') }}
           max={{ value: 100, label: '100', color: PlatformColor('systemRed') }}
           color={COLORS}
@@ -25,7 +29,11 @@ export default function GaugeScreen() {
         />
       </Section>
       <Section title="Circular">
-        <Gauge current={{ value: 0.2, label: '20%' }} color={COLORS} type="circular" />
+        <Gauge
+          current={{ value: 0.2, label: '20%' }}
+          color={COLORS}
+          type="circular"
+        />
         <Gauge
           current={{ value: 0.7, label: '70%' }}
           color={[...COLORS].reverse()}

@@ -6,7 +6,7 @@ import { useVideoPlayer, VideoView } from 'expo-video';
 import * as React from 'react';
 import { View, StyleSheet, Platform, Text } from 'react-native';
 
-import { Section } from '../../components/Page';
+import { Section } from '@/components/UI/Page';
 
 const videoLink =
   'https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/360/Big_Buck_Bunny_360_10s_2MB.mp4';
@@ -29,13 +29,15 @@ export default function ContextMenuScreen() {
           <ContextMenu.Items>
             <Button
               systemImage={{ ios: 'person.crop.circle.badge.xmark' }}
-              onPress={() => console.log('Pressed1')}>
+              onPress={() => console.log('Pressed1')}
+            >
               Hello
             </Button>
             <Button
               variant="bordered"
               systemImage={{ ios: 'heart' }}
-              onPress={() => console.log('Pressed2')}>
+              onPress={() => console.log('Pressed2')}
+            >
               I love
             </Button>
             <Picker
@@ -43,7 +45,9 @@ export default function ContextMenuScreen() {
               options={['very', 'veery', 'veeery', 'much']}
               variant="menu"
               selectedIndex={selectedIndex}
-              onOptionSelected={({ nativeEvent: { index } }) => setSelectedIndex(index)}
+              onOptionSelected={({ nativeEvent: { index } }) =>
+                setSelectedIndex(index)
+              }
             />
           </ContextMenu.Items>
           <ContextMenu.Trigger>
@@ -71,7 +75,13 @@ export default function ContextMenuScreen() {
             <Button role="destructive" systemImage={{ ios: 'hand.thumbsdown' }}>
               I don't like doggos 😡
             </Button>
-            <Submenu button={<Button systemImage={{ ios: 'heart.slash' }}>Evil submenu</Button>}>
+            <Submenu
+              button={
+                <Button systemImage={{ ios: 'heart.slash' }}>
+                  Evil submenu
+                </Button>
+              }
+            >
               <Button>I hate</Button>
               <Button>doggos</Button>
               <Submenu button={<Button>👹Very evil submenu 👺</Button>}>
@@ -82,7 +92,11 @@ export default function ContextMenuScreen() {
           </ContextMenu.Items>
           <ContextMenu.Trigger>
             <View style={styles.longPressMenu}>
-              <VideoView player={player} style={styles.longPressMenu} contentFit="cover" />
+              <VideoView
+                player={player}
+                style={styles.longPressMenu}
+                contentFit="cover"
+              />
             </View>
           </ContextMenu.Trigger>
           <ContextMenu.Preview>
@@ -106,7 +120,11 @@ export default function ContextMenuScreen() {
               </Button>
               <Button
                 variant="bordered"
-                elementColors={{ containerColor: '#0000ff', contentColor: '#00ff00' }}>
+                elementColors={{
+                  containerColor: '#0000ff',
+                  contentColor: '#00ff00',
+                }}
+              >
                 My text is green!
               </Button>
               <Switch

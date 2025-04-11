@@ -2,7 +2,7 @@ import { TextInput } from '@expo/ui/TextInput';
 import * as React from 'react';
 import { Text } from 'react-native';
 
-import { Page, Section } from '../../components/Page';
+import { Page, Section } from '@/components/UI/Page';
 
 export default function TextInputScreen() {
   const [value, setValue] = React.useState<string>('');
@@ -12,7 +12,11 @@ export default function TextInputScreen() {
         <Text>{JSON.stringify(value)}</Text>
       </Section>
       <Section title="Text Input">
-        <TextInput autocorrection={false} defaultValue="hey there" onChangeText={setValue} />
+        <TextInput
+          autocorrection={false}
+          defaultValue="hey there"
+          onChangeText={setValue}
+        />
       </Section>
       <Section title="Multiline Text Input">
         <TextInput

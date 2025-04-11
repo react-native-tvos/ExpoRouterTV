@@ -42,6 +42,16 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
+        name="expo_ui"
+        options={{
+          title: 'Expo UI',
+          tabBarIcon: () =>
+            Platform.OS === 'android'
+              ? require('@/assets/bar_icons/code.png')
+              : null,
+        }}
+      />
+      <Tabs.Screen
         name="tv_focus"
         options={{
           title: 'TV event demo',

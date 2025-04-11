@@ -1,7 +1,7 @@
 import { Switch } from '@expo/ui/Switch';
 import * as React from 'react';
 
-import { Page, Section } from '../../components/Page';
+import { Page, Section } from '@/components/UI/Page';
 
 export default function SwitchScreen() {
   const [checked, setChecked] = React.useState<boolean>(true);

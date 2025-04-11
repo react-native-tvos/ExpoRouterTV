@@ -3,13 +3,15 @@ import { Picker } from '@expo/ui/Picker';
 import * as React from 'react';
 import { Platform, ScrollView, Text, View } from 'react-native';
 
-import { Page, Section } from '../../components/Page';
+import { Page, Section } from '@/components/UI/Page';
 
 export default function DatePickerScreen() {
   const [selectedDate, setSelectedDate] = React.useState(new Date());
 
   const displayOptions =
-    Platform.OS === 'ios' ? ['compact', 'graphical', 'wheel'] : ['picker', 'input'];
+    Platform.OS === 'ios'
+      ? ['compact', 'graphical', 'wheel']
+      : ['picker', 'input'];
   const [selectedIndex, setSelectedIndex] = React.useState(0);
 
   const typeOptions = ['date', 'hourAndMinute', 'dateAndTime'];
@@ -35,11 +37,21 @@ export default function DatePickerScreen() {
               onDateSelected={(date) => {
                 setSelectedDate(date);
               }}
-              displayedComponents={typeOptions[typeIndex] as DatePickerProps['displayedComponents']}
+              displayedComponents={
+                typeOptions[typeIndex] as DatePickerProps['displayedComponents']
+              }
               initialDate={selectedDate.toISOString()}
-              iosVariant={displayOptions[selectedIndex] as DatePickerProps['iosVariant']}
-              androidVariant={displayOptions[selectedIndex] as DatePickerProps['androidVariant']}
-              style={{ height: Platform.select({ android: 520, ios: undefined }) }}
+              iosVariant={
+                displayOptions[selectedIndex] as DatePickerProps['iosVariant']
+              }
+              androidVariant={
+                displayOptions[
+                  selectedIndex
+                ] as DatePickerProps['androidVariant']
+              }
+              style={{
+                height: Platform.select({ android: 520, ios: undefined }),
+              }}
               showVariantToggle
               is24Hour
             />

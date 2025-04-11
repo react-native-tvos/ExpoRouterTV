@@ -3,7 +3,7 @@ import { Section as NativeSection } from '@expo/ui/Section';
 import * as React from 'react';
 import { ScrollView, Text } from 'react-native';
 
-import { Page, Section } from '../../components/Page';
+import { Page, Section } from '@/components/UI/Page';
 
 export default function PickerScreen() {
   const [selectedIndex, setSelectedIndex] = React.useState<number>(0);

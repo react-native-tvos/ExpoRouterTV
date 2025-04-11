@@ -2,7 +2,7 @@ import { Button } from '@expo/ui/Button';
 import * as React from 'react';
 import { Platform, ScrollView, StyleSheet } from 'react-native';
 
-import { Page, Section } from '../../components/Page';
+import { Page, Section } from '@/components/UI/Page';
 
 export default function UIScreen() {
   return (
@@ -68,7 +68,8 @@ export default function UIScreen() {
             systemImage={{
               ios: 'folder',
               android: 'filled.AccountBox',
-            }}>
+            }}
+          >
             Folder
           </Button>
           <Button
@@ -77,7 +78,8 @@ export default function UIScreen() {
             systemImage={{
               ios: 'tortoise',
               android: 'filled.Warning',
-            }}>
+            }}
+          >
             Tortoise
           </Button>
           <Button
@@ -87,7 +89,8 @@ export default function UIScreen() {
               ios: 'trash',
               android: 'outlined.Delete',
             }}
-            elementColors={{ contentColor: '#FF6347' }}>
+            elementColors={{ contentColor: '#FF6347' }}
+          >
             Trash
           </Button>
           <Button
@@ -96,7 +99,8 @@ export default function UIScreen() {
             systemImage={{
               ios: 'heart',
               android: 'outlined.Favorite',
-            }}>
+            }}
+          >
             Heart
           </Button>
         </Section>
@@ -104,12 +108,20 @@ export default function UIScreen() {
           <Section title="Android Custom Colored Buttons">
             <Button
               style={styles.button}
-              elementColors={{ containerColor: '#007BFF', contentColor: '#FF6347' }}>
+              elementColors={{
+                containerColor: '#007BFF',
+                contentColor: '#FF6347',
+              }}
+            >
               Blue
             </Button>
             <Button
               style={styles.button}
-              elementColors={{ containerColor: '#FF6347', contentColor: '#007BFF' }}>
+              elementColors={{
+                containerColor: '#FF6347',
+                contentColor: '#007BFF',
+              }}
+            >
               Red
             </Button>
           </Section>
