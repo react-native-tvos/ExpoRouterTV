@@ -5,12 +5,17 @@ import { withLayoutContext } from 'expo-router';
 import { createNativeBottomTabNavigator } from '@bottom-tabs/react-navigation';
 import { Platform } from 'react-native';
 
+import TabLayoutJS from './_layout.web';
+
 export const Tabs = withLayoutContext(
   createNativeBottomTabNavigator().Navigator,
 );
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
+  if (Platform.OS === 'android') {
+    return <TabLayoutJS />;
+  }
   const colors = Colors[colorScheme ?? 'light'];
   return (
     <Tabs
