@@ -1,6 +1,7 @@
 import { CircularProgress, LinearProgress } from '@expo/ui/Progress';
 import * as React from 'react';
 import { Platform } from 'react-native';
+import { scale } from 'react-native-size-matters';
 
 import { Page, Section } from '@/components/UI/Page';
 
@@ -18,20 +19,20 @@ export default function ProgressScreen() {
 
   return (
     <Page>
-      <Section title="Indeterminate progress" gap={16}>
+      <Section title="Indeterminate progress" gap={scale(16)}>
         <CircularProgress />
         <LinearProgress />
       </Section>
-      <Section title="Determinate progress" gap={16}>
+      <Section title="Determinate progress" gap={scale(16)}>
         <CircularProgress progress={progress} />
         <LinearProgress progress={progress} />
       </Section>
-      <Section title="Color" gap={16}>
+      <Section title="Color" gap={scale(16)}>
         <CircularProgress progress={progress} color="red" />
         <LinearProgress progress={progress} color="red" />
       </Section>
       {Platform.OS === 'android' && (
-        <Section title="Track color" gap={16}>
+        <Section title="Track color" gap={scale(16)}>
           <CircularProgress elementColors={{ trackColor: '#cccccc' }} />
           <LinearProgress elementColors={{ trackColor: '#cccccc' }} />
         </Section>

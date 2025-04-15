@@ -5,8 +5,9 @@ import { Slider } from '@expo/ui/Slider';
 import { Switch } from '@expo/ui/Switch';
 import * as React from 'react';
 import { Text } from 'react-native';
+import { scale } from 'react-native-size-matters';
+
 export default function SectionScreen() {
-  const [color, setColor] = React.useState<string | null>('blue');
   const [selectedIndex, setSelectedIndex] = React.useState<number | null>(null);
   const options = ['$', '$$', '$$$', '$$$$'];
   const [sliderValue, setSliderValue] = React.useState<number>(0.5);
@@ -14,7 +15,7 @@ export default function SectionScreen() {
 
   return (
     <Section title="My form Section" style={{ flex: 1 }}>
-      <Text style={{ fontSize: 17 }}>Some text!</Text>
+      <Text style={{ fontSize: scale(17) }}>Some text!</Text>
       <Button onPress={() => alert('Clicked!')}>I'm a button</Button>
       <Switch
         value={switchValue}

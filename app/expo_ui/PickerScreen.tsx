@@ -2,6 +2,7 @@ import { Picker } from '@expo/ui/Picker';
 import { Section as NativeSection } from '@expo/ui/Section';
 import * as React from 'react';
 import { ScrollView, Text } from 'react-native';
+import { scale } from 'react-native-size-matters';
 
 import { Page, Section } from '@/components/UI/Page';
 
@@ -25,7 +26,7 @@ export default function PickerScreen() {
           />
         </Section>
         <Section title="Menu picker">
-          <NativeSection style={{ height: 100 }}>
+          <NativeSection style={{ height: scale(100) }}>
             <Picker
               options={options}
               selectedIndex={selectedIndex}
@@ -38,7 +39,7 @@ export default function PickerScreen() {
           </NativeSection>
         </Section>
         <Section title="Inline picker">
-          <NativeSection style={{ height: 300 }}>
+          <NativeSection style={{ height: scale(300) }}>
             <Picker
               options={options}
               selectedIndex={selectedIndex}
@@ -59,8 +60,8 @@ export default function PickerScreen() {
             }}
             variant="wheel"
             style={{
-              width: 300,
-              height: 200,
+              width: scale(300),
+              height: scale(200),
             }}
           />
         </Section>

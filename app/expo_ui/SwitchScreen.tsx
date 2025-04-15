@@ -1,5 +1,6 @@
 import { Switch } from '@expo/ui/Switch';
 import * as React from 'react';
+import { scale } from 'react-native-size-matters';
 
 import { Page, Section } from '@/components/UI/Page';
 
@@ -10,7 +11,7 @@ export default function SwitchScreen() {
       <Section title="Switch">
         <Switch
           value={checked}
-          style={{ width: 300, height: 50 }}
+          style={{ width: scale(300), height: scale(50) }}
           onValueChange={setChecked}
           color="#ff0000"
           label="Never gonna give you up"
@@ -20,7 +21,7 @@ export default function SwitchScreen() {
       <Section title="Checkbox Switch">
         <Switch
           value={checked}
-          style={{ width: 300, height: 50 }}
+          style={{ width: scale(300), height: scale(50) }}
           onValueChange={setChecked}
           label="Never gonna let you down"
           color="#ff0000"
@@ -30,7 +31,7 @@ export default function SwitchScreen() {
       <Section title="Button Switch">
         <Switch
           value={checked}
-          style={{ width: 300, height: 50 }}
+          style={{ width: scale(300), height: scale(50) }}
           onValueChange={setChecked}
           label="Never gonna run around and desert you"
           variant="button"

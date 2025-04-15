@@ -26,9 +26,10 @@ export default function ContextMenuScreen() {
   return (
     <Page>
       <Section title="Single-Press Context Menu" row>
-        <ContextMenu style={{ width: 150, height: 50 }}>
+        <ContextMenu style={{ width: scale(150), height: scale(50) }}>
           <ContextMenu.Items>
             <Button
+              variant="bordered"
               systemImage={{ ios: 'person.crop.circle.badge.xmark' }}
               onPress={() => console.log('Pressed1')}
             >
@@ -52,7 +53,10 @@ export default function ContextMenuScreen() {
             />
           </ContextMenu.Items>
           <ContextMenu.Trigger>
-            <Button variant="bordered" style={{ width: 150, height: 50 }}>
+            <Button
+              variant="bordered"
+              style={{ width: scale(150), height: scale(50) }}
+            >
               Show Menu
             </Button>
           </ContextMenu.Trigger>

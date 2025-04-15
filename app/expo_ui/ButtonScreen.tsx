@@ -1,6 +1,6 @@
 import { Button } from '@expo/ui/Button';
 import * as React from 'react';
-import { Platform, ScrollView, SectionList, StyleSheet } from 'react-native';
+import { Platform, SectionList, StyleSheet } from 'react-native';
 import { scale } from 'react-native-size-matters';
 
 import { Page, Section } from '@/components/UI/Page';
