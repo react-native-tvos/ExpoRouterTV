@@ -1,4 +1,4 @@
-import { DateTimePicker, DatePickerProps } from '@expo/ui/DatePicker';
+import { DateTimePicker, DateTimePickerProps } from '@expo/ui/DatePicker';
 import { Picker } from '@expo/ui/Picker';
 import * as React from 'react';
 import { Platform, ScrollView, Text, View } from 'react-native';
@@ -38,16 +38,20 @@ export default function DatePickerScreen() {
                 setSelectedDate(date);
               }}
               displayedComponents={
-                typeOptions[typeIndex] as DatePickerProps['displayedComponents']
+                typeOptions[
+                  typeIndex
+                ] as DateTimePickerProps['displayedComponents']
               }
               initialDate={selectedDate.toISOString()}
               iosVariant={
-                displayOptions[selectedIndex] as DatePickerProps['iosVariant']
+                displayOptions[
+                  selectedIndex
+                ] as DateTimePickerProps['iosVariant']
               }
               androidVariant={
                 displayOptions[
                   selectedIndex
-                ] as DatePickerProps['androidVariant']
+                ] as DateTimePickerProps['androidVariant']
               }
               style={{
                 height: Platform.select({ android: 520, ios: undefined }),
