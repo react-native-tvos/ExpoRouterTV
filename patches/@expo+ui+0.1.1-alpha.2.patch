@@ -1,0 +1,52 @@
+diff --git a/node_modules/@expo/ui/ios/ColorPickerView.swift b/node_modules/@expo/ui/ios/ColorPickerView.swift
+index 870c5e3..4c993fd 100644
+--- a/node_modules/@expo/ui/ios/ColorPickerView.swift
++++ b/node_modules/@expo/ui/ios/ColorPickerView.swift
+@@ -31,7 +31,7 @@ struct ColorPickerView: ExpoSwiftUI.View, ExpoSwiftUI.WithHostingView {
+         }
+       }
+ #else
+-    EmptyView()
++    Text("ColorPicker is not supported on tvOS")
+ #endif
+   }
+ 
+diff --git a/node_modules/@expo/ui/ios/Gauge/Gauge.swift b/node_modules/@expo/ui/ios/Gauge/Gauge.swift
+index ee1c064..a1b1f5a 100644
+--- a/node_modules/@expo/ui/ios/Gauge/Gauge.swift
++++ b/node_modules/@expo/ui/ios/Gauge/Gauge.swift
+@@ -36,7 +36,7 @@ struct GaugeView: ExpoSwiftUI.View, ExpoSwiftUI.WithHostingView {
+       }
+     }
+ #else
+-    EmptyView()
++    Text("Gauge is not supported on tvOS")
+ #endif
+   }
+ 
+diff --git a/node_modules/@expo/ui/ios/SliderView.swift b/node_modules/@expo/ui/ios/SliderView.swift
+index 43460e5..91daa5b 100644
+--- a/node_modules/@expo/ui/ios/SliderView.swift
++++ b/node_modules/@expo/ui/ios/SliderView.swift
+@@ -49,7 +49,7 @@ struct SliderView: ExpoSwiftUI.View, ExpoSwiftUI.WithHostingView {
+       value = sliderValue
+     })
+     #else
+-    Text("Slider not supported on this platform")
++    Text("Slider is not supported on tvOS")
+     #endif
+   }
+ }
+diff --git a/node_modules/@expo/ui/ios/SwiftUIPicker.swift b/node_modules/@expo/ui/ios/SwiftUIPicker.swift
+index ceb59ad..76b8ee7 100644
+--- a/node_modules/@expo/ui/ios/SwiftUIPicker.swift
++++ b/node_modules/@expo/ui/ios/SwiftUIPicker.swift
+@@ -29,6 +29,8 @@ struct SwiftUIPicker: ExpoSwiftUI.View {
+       }
+       #if !os(tvOS)
+       .if(props.variant == "wheel", { $0.pickerStyle(.wheel) })
++      #else
++      .if(props.variant == "wheel", { $0.pickerStyle(.automatic) })
+       #endif
+       .if(props.variant == "segmented", { $0.pickerStyle(.segmented) })
+       .if(props.variant == "menu", { $0.pickerStyle(.menu) })
