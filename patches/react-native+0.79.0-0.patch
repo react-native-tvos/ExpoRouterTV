@@ -1,0 +1,35 @@
+diff --git a/node_modules/react-native/Libraries/Components/TV/TVEventHandler.js b/node_modules/react-native/Libraries/Components/TV/TVEventHandler.js
+index 44dc443..fc6b6d8 100644
+--- a/node_modules/react-native/Libraries/Components/TV/TVEventHandler.js
++++ b/node_modules/react-native/Libraries/Components/TV/TVEventHandler.js
+@@ -17,7 +17,15 @@ import NativeEventEmitter from '../../EventEmitter/NativeEventEmitter';
+ import Platform from '../../Utilities/Platform';
+ import {type EventSubscription} from '../../vendor/emitter/EventEmitter';
+ 
+-let __nativeTVNavigationEventEmitter: ?NativeEventEmitter<TVRemoteEvent> = null;
++// let __nativeTVNavigationEventEmitter: ?NativeEventEmitter<TVRemoteEvent> = null;
++const __nativeTVNavigationEventEmitter: NativeEventEmitter<TVRemoteEvent> = new NativeEventEmitter<TVRemoteEvent>(
++  NativeTVNavigationEventEmitter,
++);
++__nativeTVNavigationEventEmitter.addListener(
++  'onHWKeyEvent',
++  () => {}
++);
++
+ 
+ const TVEventHandler: {
+   addListener: (
+@@ -28,11 +36,13 @@ const TVEventHandler: {
+     if (Platform.OS === 'ios' && !NativeTVNavigationEventEmitter) {
+       return {remove: () => {}};
+     }
++/*
+     if (!__nativeTVNavigationEventEmitter) {
+       __nativeTVNavigationEventEmitter = new NativeEventEmitter<TVRemoteEvent>(
+         NativeTVNavigationEventEmitter,
+       );
+     }
++ */
+     const subscription: EventSubscription =
+       __nativeTVNavigationEventEmitter.addListener(
+         // $FlowFixMe[prop-missing]
