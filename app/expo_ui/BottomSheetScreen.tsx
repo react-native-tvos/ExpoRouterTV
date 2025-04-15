@@ -26,13 +26,13 @@ export default function SectionScreen() {
           style={{
             height,
             padding: scale(20),
-            backgroundColor: 'blue',
+            backgroundColor: '#ddeeff',
             alignSelf: 'flex-end',
           }}
         >
           <Button
             onPress={() =>
-              setHeight((h) => (h > scale(100) ? scale(10) : scale(h + 10)))
+              setHeight((h) => (h > scale(500) ? scale(100) : scale(h + 100)))
             }
           >
             Increase height
