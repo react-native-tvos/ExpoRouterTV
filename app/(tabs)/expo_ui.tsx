@@ -1,7 +1,7 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { Href, useRouter } from 'expo-router';
 import { ScrollView, StyleSheet, Pressable, Platform } from 'react-native';
-import { scale } from 'react-native-size-matters';
+import { scale, moderateScale } from 'react-native-size-matters';
 
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
@@ -39,7 +39,15 @@ export default function UIDemoScreen() {
                   router.push(demo.route as Href);
                 }}
               >
-                <ThemedText type="link">{demo.name}</ThemedText>
+                <ThemedText
+                  style={{
+                    fontSize: moderateScale(20),
+                    lineHeight: moderateScale(27),
+                  }}
+                  type="link"
+                >
+                  {demo.name}
+                </ThemedText>
               </Pressable>
             ),
         )}
