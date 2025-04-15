@@ -1,6 +1,7 @@
 import { Stack } from 'expo-router';
 
-import { demos } from '../(tabs)/expo_ui';
+import { demos } from '@/constants/ExpoUIDemos';
+
 export default function UIScreensLayout() {
   return (
     <Stack>
