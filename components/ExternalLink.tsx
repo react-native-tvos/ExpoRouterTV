@@ -18,7 +18,7 @@ function ExternalLinkMobile({ href, ...rest }: Props) {
     <Link
       target="_blank"
       {...rest}
-      href={href as Href<string>}
+      href={href as Href}
       onPress={async (event) => {
         if (Platform.OS !== 'web') {
           // Prevent the default behavior of linking to the default browser on native.
