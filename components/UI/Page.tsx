@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { PropsWithChildren } from 'react';
-import { StyleSheet, View, ScrollView } from 'react-native';
+import { Platform, StyleSheet, View, ScrollView } from 'react-native';
 import { ThemedText } from '../ThemedText';
 import { ThemedView } from '../ThemedView';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -9,6 +9,9 @@ import { scale } from 'react-native-size-matters';
 
 export function Page({ children }: PropsWithChildren) {
   const styles = useStyles();
+  if (Platform.OS === 'android') {
+    return <View>{children}</View>;
+  }
   return (
     <View style={styles.page}>
       <SafeAreaView style={styles.page}>{children}</SafeAreaView>
