@@ -2,12 +2,12 @@ export const demos = [
   {
     name: 'Bottom Sheet',
     route: '/expo_ui/BottomSheetScreen',
-    platforms: ['ios'],
+    platforms: ['ios', 'android'],
   },
   {
     name: 'Button',
     route: '/expo_ui/ButtonScreen',
-    platforms: ['ios'],
+    platforms: ['ios', 'android'],
   },
   {
     name: 'Color Picker',
@@ -17,12 +17,12 @@ export const demos = [
   {
     name: 'Context Menu',
     route: '/expo_ui/ContextMenuScreen',
-    platforms: ['ios'],
+    platforms: ['ios', 'android'],
   },
   {
     name: 'Date Time Picker',
     route: '/expo_ui/DateTimePickerScreen',
-    platforms: ['ios'],
+    platforms: ['ios', 'android'],
   },
   {
     name: 'Gauge',
@@ -37,12 +37,12 @@ export const demos = [
   {
     name: 'Picker',
     route: '/expo_ui/PickerScreen',
-    platforms: ['ios'],
+    platforms: ['ios', 'android'],
   },
   {
     name: 'Progress',
     route: '/expo_ui/ProgressScreen',
-    platforms: ['ios'],
+    platforms: ['ios', 'android'],
   },
   {
     name: 'Section',
@@ -52,16 +52,16 @@ export const demos = [
   {
     name: 'Slider',
     route: '/expo_ui/SliderScreen',
-    platforms: ['ios'],
+    platforms: ['ios', 'android'],
   },
   {
     name: 'Switch',
     route: '/expo_ui/SwitchScreen',
-    platforms: ['ios'],
+    platforms: ['ios', 'android'],
   },
   {
     name: 'Text Input',
     route: '/expo_ui/TextInputScreen',
-    platforms: ['ios'],
+    platforms: ['ios', 'android'],
   },
 ];
