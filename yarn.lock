@@ -1725,10 +1725,10 @@
   dependencies:
     getenv "^1.0.0"
 
-"@react-native-tvos/virtualized-lists@0.79.1-0":
-  version "0.79.1-0"
-  resolved "https://registry.yarnpkg.com/@react-native-tvos/virtualized-lists/-/virtualized-lists-0.79.1-0.tgz#8dc6362c4480ee72d25506d1421b054c5fcd01a1"
-  integrity sha512-gKz51awijPO82d5h380530lca9hyG/PibR/nOOog61Z5Tq7QJldXB1cKvEvoQ2zl0cz5r+kiRR3SXH0X1Q/Gbw==
+"@react-native-tvos/virtualized-lists@0.79.1-1":
+  version "0.79.1-1"
+  resolved "https://registry.yarnpkg.com/@react-native-tvos/virtualized-lists/-/virtualized-lists-0.79.1-1.tgz#08464517339a613ee839cb1dc0677c036644f8f7"
+  integrity sha512-8LKMzc30VTmDci0Adfn8TEN1Y8ZfTBNlW6g/ucrpXI6/sQyO27UJx1TqhEl6PCf8atiWYuDOKqNI7EzDbmRGsw==
   dependencies:
     invariant "^2.2.4"
     nullthrows "^1.1.1"
@@ -7009,13 +7009,13 @@ react-native-web@^0.20.0:
     postcss-value-parser "^4.2.0"
     styleq "^0.1.3"
 
-"react-native@npm:react-native-tvos@0.79.1-0":
-  version "0.79.1-0"
-  resolved "https://registry.yarnpkg.com/react-native-tvos/-/react-native-tvos-0.79.1-0.tgz#1bc0d33bb15a5a76a0a4e8b2fa1d03912c2392ec"
-  integrity sha512-YLx0aadacVWBEQkPycNXzpBdjUrL7COhEPZlBFkCI8CW4CBJEc1D+sVmXD8Grq0aA504Jw/9u10Yi5yWbqbBnA==
+"react-native@npm:react-native-tvos@0.79.1-1":
+  version "0.79.1-1"
+  resolved "https://registry.yarnpkg.com/react-native-tvos/-/react-native-tvos-0.79.1-1.tgz#bfd6265aeec78f7d94d7b9a4ff484813c8f83058"
+  integrity sha512-QIdQ/SjiBuY4XNrW9ByYdM7cFgjFFQuzqFfkDVkx/hyivckPCkXwfQBZin9yDP7yIzQ/cwpwV/X+k68c7+ighw==
   dependencies:
     "@jest/create-cache-key-function" "^29.7.0"
-    "@react-native-tvos/virtualized-lists" "0.79.1-0"
+    "@react-native-tvos/virtualized-lists" "0.79.1-1"
     "@react-native/assets-registry" "0.79.1"
     "@react-native/codegen" "0.79.1"
     "@react-native/community-cli-plugin" "0.79.1"
