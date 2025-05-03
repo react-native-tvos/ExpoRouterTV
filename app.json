@@ -38,6 +38,7 @@
     "slug": "ExpoRouterTV",
     "scheme": "exporoutertv",
     "icon": "./assets/tv_icons/icon-760x760.png",
+    "newArchEnabled": true,
     "version": "1.0.0",
     "extra": {
       "router": {
@@ -48,10 +49,10 @@
       "image": "./assets/tv_icons/icon-1280x768.png"
     },
     "android": {
-      "newArchEnabled": true
+      "edgeToEdgeEnabled": true
     },
     "ios": {
-      "newArchEnabled": true
+      "supportsTablet": true
     }
   }
 }
