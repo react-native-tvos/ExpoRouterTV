@@ -1,0 +1,116 @@
+diff --git a/node_modules/react-native/React/Base/RCTRootView.h b/node_modules/react-native/React/Base/RCTRootView.h
+index 7634441..febac41 100644
+--- a/node_modules/react-native/React/Base/RCTRootView.h
++++ b/node_modules/react-native/React/Base/RCTRootView.h
+@@ -11,6 +11,10 @@
+ #import <React/RCTBridgeModule.h>
+ #import <React/RCTEventDispatcherProtocol.h>
+ 
++#if TARGET_OS_TV
++#import "RCTTVRemoteSelectHandler.h"
++#endif
++
+ extern NSString *const RCTTVEnableMenuKeyNotification;
+ extern NSString *const RCTTVDisableMenuKeyNotification;
+ 
+@@ -51,8 +55,11 @@ extern
+  * like any ordinary UIView. You can have multiple RCTRootViews on screen at
+  * once, all controlled by the same JavaScript application.
+  */
++#if TARGET_OS_TV
++@interface RCTRootView : UIView <RCTTVRemoteSelectHandlerDelegate>
++#else
+ @interface RCTRootView : UIView
+-
++#endif
+ /**
+  * - Designated initializer -
+  */
+diff --git a/node_modules/react-native/React/Base/RCTRootView.m b/node_modules/react-native/React/Base/RCTRootView.m
+index df273bc..f4d1842 100644
+--- a/node_modules/react-native/React/Base/RCTRootView.m
++++ b/node_modules/react-native/React/Base/RCTRootView.m
+@@ -31,6 +31,8 @@
+ #if TARGET_OS_TV
+ #import "RCTTVNavigationEventEmitter.h"
+ #import "RCTTVRemoteHandler.h"
++#import "RCTTVRemoteSelectHandler.h"
++#import <React/RCTTVNavigationEventNotification.h>
+ #endif
+ 
+ #if RCT_DEV
+@@ -98,6 +100,7 @@ NSString *const RCTContentDidAppearNotification = @"RCTContentDidAppearNotificat
+ #endif
+       
+     self.tvRemoteHandler = [[RCTTVRemoteHandler alloc] initWithView:self];
++    self.tvRemoteSelectHandler = [[RCTTVRemoteSelectHandler alloc] initWithView:self];
+ #endif
+ 
+     [self showLoadingView];
+@@ -413,21 +416,49 @@ RCT_NOT_IMPLEMENTED(-(instancetype)initWithCoder : (NSCoder *)aDecoder)
+   }
+   
+   [[NSNotificationCenter defaultCenter]
+-      postNotificationName:RCTUserInterfaceStyleDidChangeNotification
+-                    object:self
+-                  userInfo:@{
+-                    RCTUserInterfaceStyleDidChangeNotificationTraitCollectionKey : self.traitCollection,
+-                  }];
++   postNotificationName:RCTUserInterfaceStyleDidChangeNotification
++   object:self
++   userInfo:@{
++    RCTUserInterfaceStyleDidChangeNotificationTraitCollectionKey : self.traitCollection,
++  }];
+ }
+ 
+ - (void)dealloc
+ {
+ #if TARGET_OS_TV
+   self.tvRemoteHandler = nil;
++  self.tvRemoteSelectHandler = nil;
+ #endif
+   [_contentView invalidate];
+ }
+ 
++- (void)animatePressIn { 
++}
++
++- (void)animatePressOut { 
++}
++
++- (void)emitPressInEvent { 
++}
++
++- (void)emitPressOutEvent { 
++}
++
++- (void)sendSelectNotification
++{
++    [[NSNotificationCenter defaultCenter] postNavigationPressEventWithType:RCTTVRemoteEventSelect keyAction:RCTTVRemoteEventKeyActionUp tag:self.reactTag target:self.reactTag];
++}
++
++- (void)sendLongSelectBeganNotification
++{
++    [[NSNotificationCenter defaultCenter] postNavigationPressEventWithType:RCTTVRemoteEventLongSelect keyAction:RCTTVRemoteEventKeyActionDown tag:self.reactTag target:self.reactTag];
++}
++
++- (void)sendLongSelectEndedNotification
++{
++    [[NSNotificationCenter defaultCenter] postNavigationPressEventWithType:RCTTVRemoteEventLongSelect keyAction:RCTTVRemoteEventKeyActionUp tag:self.reactTag target:self.reactTag];
++}
++
+ @end
+ 
+ @implementation RCTRootView (Deprecated)
+diff --git a/node_modules/react-native/React/Base/RCTRootViewInternal.h b/node_modules/react-native/React/Base/RCTRootViewInternal.h
+index 93ee791..c7d13e0 100644
+--- a/node_modules/react-native/React/Base/RCTRootViewInternal.h
++++ b/node_modules/react-native/React/Base/RCTRootViewInternal.h
+@@ -26,6 +26,7 @@
+  */
+ #if TARGET_OS_TV
+ @property (nonatomic, strong) RCTTVRemoteHandler *tvRemoteHandler;
++@property (nonatomic, strong) RCTTVRemoteSelectHandler *tvRemoteSelectHandler;
+ @property (nonatomic, weak) UIView *reactPreferredFocusedView;
+ @property (nonatomic, copy, nullable) NSArray<id<UIFocusEnvironment>> *reactPreferredFocusEnvironments;
+ #endif
