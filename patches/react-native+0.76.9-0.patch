@@ -27,7 +27,7 @@ index 7634441..febac41 100644
   * - Designated initializer -
   */
 diff --git a/node_modules/react-native/React/Base/RCTRootView.m b/node_modules/react-native/React/Base/RCTRootView.m
-index df273bc..f4d1842 100644
+index df273bc..1451f8f 100644
 --- a/node_modules/react-native/React/Base/RCTRootView.m
 +++ b/node_modules/react-native/React/Base/RCTRootView.m
 @@ -31,6 +31,8 @@
@@ -47,23 +47,7 @@ index df273bc..f4d1842 100644
  #endif
  
      [self showLoadingView];
-@@ -413,21 +416,49 @@ RCT_NOT_IMPLEMENTED(-(instancetype)initWithCoder : (NSCoder *)aDecoder)
-   }
-   
-   [[NSNotificationCenter defaultCenter]
--      postNotificationName:RCTUserInterfaceStyleDidChangeNotification
--                    object:self
--                  userInfo:@{
--                    RCTUserInterfaceStyleDidChangeNotificationTraitCollectionKey : self.traitCollection,
--                  }];
-+   postNotificationName:RCTUserInterfaceStyleDidChangeNotification
-+   object:self
-+   userInfo:@{
-+    RCTUserInterfaceStyleDidChangeNotificationTraitCollectionKey : self.traitCollection,
-+  }];
- }
- 
- - (void)dealloc
+@@ -424,10 +427,40 @@ RCT_NOT_IMPLEMENTED(-(instancetype)initWithCoder : (NSCoder *)aDecoder)
  {
  #if TARGET_OS_TV
    self.tvRemoteHandler = nil;
@@ -72,6 +56,7 @@ index df273bc..f4d1842 100644
    [_contentView invalidate];
  }
  
++#if TARGET_OS_TV
 +- (void)animatePressIn { 
 +}
 +
@@ -98,6 +83,7 @@ index df273bc..f4d1842 100644
 +{
 +    [[NSNotificationCenter defaultCenter] postNavigationPressEventWithType:RCTTVRemoteEventLongSelect keyAction:RCTTVRemoteEventKeyActionUp tag:self.reactTag target:self.reactTag];
 +}
++#endif
 +
  @end
  
@@ -114,3 +100,24 @@ index 93ee791..c7d13e0 100644
  @property (nonatomic, weak) UIView *reactPreferredFocusedView;
  @property (nonatomic, copy, nullable) NSArray<id<UIFocusEnvironment>> *reactPreferredFocusEnvironments;
  #endif
+diff --git a/node_modules/react-native/React/Base/RCTTVRemoteSelectHandler.m b/node_modules/react-native/React/Base/RCTTVRemoteSelectHandler.m
+index 07f7189..2614167 100644
+--- a/node_modules/react-native/React/Base/RCTTVRemoteSelectHandler.m
++++ b/node_modules/react-native/React/Base/RCTTVRemoteSelectHandler.m
+@@ -36,7 +36,7 @@
+ 
+ // Press recognizer should allow long press recognizer to work (but not the reverse)
+ - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+-  return gestureRecognizer == _pressRecognizer;
++  return gestureRecognizer == self.pressRecognizer && otherGestureRecognizer == self.longPressRecognizer;
+ }
+ 
+ #pragma mark -
+@@ -54,6 +55,7 @@
+   UILongPressGestureRecognizer *longPressRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
+   longPressRecognizer.allowedPressTypes = @[ @(UIPressTypeSelect) ];
+   longPressRecognizer.minimumPressDuration = 0.5;
++  longPressRecognizer.delegate = self;
+ 
+   [self.view addGestureRecognizer:longPressRecognizer];
+   self.longPressRecognizer = longPressRecognizer;
