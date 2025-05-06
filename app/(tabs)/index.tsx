@@ -1,92 +1,79 @@
-import { Image, StyleSheet, Platform, Pressable } from 'react-native';
-import { Link } from 'expo-router';
+import Ionicons from '@expo/vector-icons/Ionicons';
+import { StyleSheet, Platform } from 'react-native';
 import { scale } from 'react-native-size-matters';
 
-import { HelloWave } from '@/components/HelloWave';
+// import { Collapsible } from '@/components/Collapsible';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
+import { EventHandlingDemo } from '@/components/EventHandlingDemo';
 
-export default function HomeScreen() {
+export default function FocusDemoScreen() {
   return (
     <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
+      headerBackgroundColor={{ light: '#D0D0D0', dark: '#353636' }}
       headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
+        <Ionicons
+          size={scale(200)}
+          name="tv-outline"
+          style={styles.headerImage}
         />
       }
     >
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
+        <ThemedText type="title">TV event handling demo</ThemedText>
       </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
+      <ThemedText>
+        Demo of focus handling and TV remote event handling in{' '}
+        <ThemedText type="defaultSemiBold">Pressable</ThemedText> and{' '}
+        <ThemedText type="defaultSemiBold">Touchable</ThemedText> components.
+      </ThemedText>
+      {/*
+      <Collapsible title="How it works">
         <ThemedText>
-          Edit{' '}
-          <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText>{' '}
-          to see changes. Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({ ios: 'cmd + d', android: 'cmd + m' })}
-          </ThemedText>{' '}
-          to open developer tools.
+          • On TV platforms, these components have "onFocus()" and "onBlur()"
+          props, in addition to the usual "onPress()". These can be used to
+          modify the style of the component when it is navigated to or navigated
+          away from by the TV focus engine. In addition, the functional forms of
+          the Pressable style prop and the Pressable content, which in React
+          Native core take a "pressed" boolean parameter, can also take
+          "focused" as a parameter on TV platforms.
         </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
         <ThemedText>
-          Tap the Explore tab to learn more about what's included in this
-          starter app.
+          • As you use the arrow keys to navigate around the screen, the demo
+          uses the above props to update lists of recent events.
         </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
         <ThemedText>
-          When you're ready, run{' '}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText>{' '}
-          to get a fresh <ThemedText type="defaultSemiBold">app</ThemedText>{' '}
-          directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
+          • In RNTV 0.76.2, the focus, blur, pressIn, and pressOut events of
+          Pressable and Touchable components are implemented as core React
+          Native events, emitted directly from native code for better
+          performance. They can be received by containing views in either the
+          capture or bubble phase. This demo shows how information can be
+          attached to these events by a Pressable, and then received by a
+          containing View's event handler.
         </ThemedText>
-      </ThemedView>
-      <ThemedView>
-        <Link href="/modal" asChild>
-          <Pressable>
-            {({ focused }) => {
-              return (
-                <ThemedText
-                  type="defaultSemiBold"
-                  style={{ opacity: focused ? 0.6 : 1.0 }}
-                >
-                  About this demo
-                </ThemedText>
-              );
-            }}
-          </Pressable>
-        </Link>
-      </ThemedView>
+      </Collapsible>
+      */}
+      {Platform.isTV ? (
+        <EventHandlingDemo />
+      ) : (
+        <ThemedText>
+          Run this on Apple TV or Android TV to see the demo.
+        </ThemedText>
+      )}
     </ParallaxScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: scale(8),
-  },
-  stepContainer: {
-    gap: scale(8),
-    marginBottom: scale(8),
-  },
-  reactLogo: {
-    height: scale(75),
-    width: scale(150),
-    bottom: 0,
+  headerImage: {
+    color: '#808080',
+    bottom: scale(-30),
     left: 0,
     position: 'absolute',
+  },
+  titleContainer: {
+    flexDirection: 'row',
+    gap: scale(8),
   },
 });

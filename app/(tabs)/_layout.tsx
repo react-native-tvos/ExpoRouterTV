@@ -23,40 +23,10 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Home',
-          tabBarIcon: () =>
-            Platform.OS === 'android'
-              ? require('@/assets/bar_icons/home.png')
-              : null,
-        }}
-      />
-      <Tabs.Screen
-        name="explore"
-        options={{
-          title: 'Explore',
-          tabBarIcon: () =>
-            Platform.OS === 'android'
-              ? require('@/assets/bar_icons/code.png')
-              : null,
-        }}
-      />
-      <Tabs.Screen
-        name="tv_focus"
-        options={{
           title: 'TV event demo',
           tabBarIcon: () =>
             Platform.OS === 'android'
               ? require('@/assets/bar_icons/tv.png')
-              : null,
-        }}
-      />
-      <Tabs.Screen
-        name="video"
-        options={{
-          title: 'Video demo',
-          tabBarIcon: () =>
-            Platform.OS === 'android'
-              ? require('@/assets/bar_icons/video.png')
               : null,
         }}
       />
