@@ -31,9 +31,9 @@ export function EventHandlingDemo() {
     return newEventLog;
   };
 
-  const updatePressableLog = (entry: string) => {
-    setPressableEventLog((log) => logWithAppendedEntry(log, entry));
-  };
+  // const updatePressableLog = (entry: string) => {
+  //   setPressableEventLog((log) => logWithAppendedEntry(log, entry));
+  // };
 
   useTVEventHandler((event) => {
     const { eventType, eventKeyAction } = event;
@@ -43,7 +43,7 @@ export function EventHandlingDemo() {
           log,
           `type=${eventType}, action=${
             eventKeyAction !== undefined ? eventKeyAction : ''
-          }`,
+          }, tag = ${event.tag}`,
         ),
       );
     }
@@ -84,6 +84,7 @@ export function EventHandlingDemo() {
             </View>
           </ScrollView>
         </ThemedView>
+        {/* 
         <ThemedView
           style={styles.buttonsContainer}
           onFocus={(event: any) => {
@@ -110,6 +111,7 @@ export function EventHandlingDemo() {
             log={updatePressableLog}
           />
         </ThemedView>
+          */}
       </ThemedView>
     </TVFocusGuideView>
   );
