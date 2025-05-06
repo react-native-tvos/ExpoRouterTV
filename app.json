@@ -46,11 +46,12 @@
     "splash": {
       "image": "./assets/tv_icons/icon-1280x768.png"
     },
+    "newArchEnabled": false,
     "android": {
-      "newArchEnabled": true
+      "package": "com.douglowderexpo.ExpoRouterTV"
     },
     "ios": {
-      "newArchEnabled": true
+      "bundleIdentifier": "com.douglowderexpo.ExpoRouterTV"
     }
   }
 }
