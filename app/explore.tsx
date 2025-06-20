@@ -25,7 +25,6 @@ export default function ExploreScreen() {
       <ThemedView style={styles.titleContainer}>
         <ThemedText type="title">Explore</ThemedText>
       </ThemedView>
-        This screen demonstrates the use of file-based routing in Expo Router.
       <ThemedView>
         <Pressable
           onPress={() => {
