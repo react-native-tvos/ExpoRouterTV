@@ -1,5 +1,6 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { StyleSheet, Image, Platform } from 'react-native';
+import { Image, StyleSheet, Platform, Pressable, Text } from 'react-native';
+import { useRouter } from 'expo-router';
 import { scale } from 'react-native-size-matters';
 
 import { Collapsible } from '@/components/Collapsible';
@@ -9,6 +10,7 @@ import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 
 export default function ExploreScreen() {
+  const router = useRouter();
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#D0D0D0', dark: '#353636' }}
@@ -23,6 +25,22 @@ export default function ExploreScreen() {
       <ThemedView style={styles.titleContainer}>
         <ThemedText type="title">Explore</ThemedText>
       </ThemedView>
+        This screen demonstrates the use of file-based routing in Expo Router.
+      <ThemedView>
+        <Pressable
+          onPress={() => {
+            console.log('Navigate to Video');
+            router.push({ pathname: '/video' }); 
+          }}
+          style={({ pressed, focused }) => [
+            styles.button,
+            pressed || focused ? { backgroundColor: 'blue' } : {},
+          ]}
+        >
+          <Text style={styles.buttonText}>To Video</Text>
+        </Pressable>
+      </ThemedView>
+
       <ThemedText>
         This app includes example code to help you get started.
       </ThemedText>
@@ -130,5 +148,15 @@ const styles = StyleSheet.create({
   titleContainer: {
     flexDirection: 'row',
     gap: scale(8),
+  },
+  button: {
+    backgroundColor: 'darkblue',
+    margin: scale(5),
+    borderRadius: scale(2),
+    padding: scale(5),
+  },
+  buttonText: {
+    color: 'white',
+    fontSize: scale(8),
   },
 });
