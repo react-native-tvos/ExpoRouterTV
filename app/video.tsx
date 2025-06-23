@@ -1,32 +1,28 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { StyleSheet, TVEventHandler } from 'react-native';
+import { StyleSheet, BackHandler } from 'react-native';
 
 import { scale } from 'react-native-size-matters';
-import { useFocusEffect } from '@react-navigation/native';
-import { useCallback, useRef } from 'react';
+import { useEffect } from 'react';
+import { useRouter } from 'expo-router';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import VideoTest from '@/components/VideoTest';
 
 export default function VideoDemoScreen() {
-  const subscription = useRef<any>(null);
-  useFocusEffect(
-    useCallback(() => { 
-      console.log(`TVEventHandler.addListener PlayerScreen`);
-      subscription.current = TVEventHandler.addListener((evt) => {
-        console.log(`Player TV Event: ${JSON.stringify(evt)}`);
-        // TODO: Handle TV events if needed
-      });
-      return () => {
-        if (subscription.current) {
-          console.log(`TVEventHandler.removeListener PlayerScreen`);
-          subscription.current.remove();
-          subscription.current = null;
-        }
-      };
-    }, [])
-  );
+  const router = useRouter();
+  useEffect(() => {
+    console.log('BackHandler.addEventListener VideoDemoScreen');
+    const sub = BackHandler.addEventListener('hardwareBackPress', () => {
+      console.log('Back/menu pressed VideoDemoScreen');
+      router.replace('/explore'); // Navigate to home screen
+      return true; // prevent default
+    });
+    return () => {
+      console.log('BackHandler.remove VideoDemoScreen');
+      sub.remove();
+    }
+  }, []);
 
   return (
     <ParallaxScrollView
