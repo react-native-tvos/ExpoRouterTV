@@ -1,34 +1,13 @@
 import { Image, StyleSheet, Platform, Pressable, TVEventHandler, Text } from 'react-native';
-import { useCallback, useRef } from 'react';
 import { Link, useRouter } from 'expo-router';
 import { scale } from 'react-native-size-matters';
-import { useFocusEffect } from '@react-navigation/native';
-
 import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 
 export default function HomeScreen() {
-
   const router = useRouter();
-  const subscription = useRef<any>(null);
-  useFocusEffect(
-    useCallback(() => { 
-      console.log(`TVEventHandler.addListener HomeScreen`);
-      subscription.current = TVEventHandler.addListener((evt) => {
-        console.log(`Home TV Event: ${JSON.stringify(evt)}`);
-        // TODO: Handle TV events if needed
-      });
-      return () => {
-        if (subscription.current) {
-          console.log(`TVEventHandler.removeListener HomeScreen`);
-          subscription.current.remove();
-          subscription.current = null;
-        }
-      };
-    }, [])
-  );
 
   return (
     <ParallaxScrollView

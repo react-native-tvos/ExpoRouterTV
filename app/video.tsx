@@ -1,5 +1,5 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { StyleSheet, BackHandler } from 'react-native';
+import { StyleSheet, BackHandler, TVEventControl } from 'react-native';
 
 import { scale } from 'react-native-size-matters';
 import { useEffect } from 'react';
@@ -11,17 +11,27 @@ import VideoTest from '@/components/VideoTest';
 
 export default function VideoDemoScreen() {
   const router = useRouter();
+
   useEffect(() => {
-    console.log('BackHandler.addEventListener VideoDemoScreen');
+    console.log('BackHandler.addEventListener');
     const sub = BackHandler.addEventListener('hardwareBackPress', () => {
-      console.log('Back/menu pressed VideoDemoScreen');
+      console.log('Back/menu pressed');
       router.replace('/explore'); // Navigate to home screen
       return true; // prevent default
     });
     return () => {
-      console.log('BackHandler.remove VideoDemoScreen');
+      console.log('BackHandler.remove');
       sub.remove();
     }
+  }, []);
+  
+  useEffect(() => {
+    console.log('TVEventControl.enableTVMenuKey');
+    TVEventControl.enableTVMenuKey();
+    return () => {
+      console.log('TVEventControl.disableTVMenuKey');
+      TVEventControl.disableTVMenuKey();
+    };
   }, []);
 
   return (
