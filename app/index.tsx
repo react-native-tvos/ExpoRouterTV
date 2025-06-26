@@ -1,13 +1,14 @@
-import { Image, StyleSheet, Platform, Pressable } from 'react-native';
-import { Link } from 'expo-router';
+import { Image, StyleSheet, Platform, Pressable, TVEventHandler, Text } from 'react-native';
+import { Link, useRouter } from 'expo-router';
 import { scale } from 'react-native-size-matters';
-
 import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 
 export default function HomeScreen() {
+  const router = useRouter();
+
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
@@ -21,6 +22,20 @@ export default function HomeScreen() {
       <ThemedView style={styles.titleContainer}>
         <ThemedText type="title">Welcome!</ThemedText>
         <HelloWave />
+      </ThemedView>
+      <ThemedView>
+        <Pressable
+          onPress={() => {
+            console.log('Navigate to Explore');
+            router.push({ pathname: '/explore' }); 
+          }}
+          style={({ pressed, focused }) => [
+            styles.button,
+            pressed || focused ? { backgroundColor: 'blue' } : {},
+          ]}
+        >
+          <Text style={styles.buttonText}>To Explore</Text>
+        </Pressable>
       </ThemedView>
       <ThemedView style={styles.stepContainer}>
         <ThemedText type="subtitle">Step 1: Try it</ThemedText>
@@ -88,5 +103,15 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     position: 'absolute',
+  },
+  button: {
+    backgroundColor: 'darkblue',
+    margin: scale(5),
+    borderRadius: scale(2),
+    padding: scale(5),
+  },
+  buttonText: {
+    color: 'white',
+    fontSize: scale(8),
   },
 });
