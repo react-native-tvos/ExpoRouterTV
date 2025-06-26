@@ -13,6 +13,8 @@ export default function VideoDemoScreen() {
   const router = useRouter();
 
   useEffect(() => {
+    console.log('TVEventControl.enableTVMenuKey');
+    TVEventControl.enableTVMenuKey();
     console.log('BackHandler.addEventListener');
     const sub = BackHandler.addEventListener('hardwareBackPress', () => {
       console.log('Back/menu pressed');
@@ -22,18 +24,11 @@ export default function VideoDemoScreen() {
     return () => {
       console.log('BackHandler.remove');
       sub.remove();
+      console.log('TVEventControl.disableTVMenuKey');
+      TVEventControl.disableTVMenuKey();
     }
   }, []);
   
-  useEffect(() => {
-    console.log('TVEventControl.enableTVMenuKey');
-    TVEventControl.enableTVMenuKey();
-    return () => {
-      console.log('TVEventControl.disableTVMenuKey');
-      TVEventControl.disableTVMenuKey();
-    };
-  }, []);
-
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#D0D0D0', dark: '#353636' }}
