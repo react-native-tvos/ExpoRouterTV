@@ -48,6 +48,11 @@
     "splash": {
       "image": "./assets/tv_icons/icon-1280x768.png"
     },
+    "web": {
+      "bundler": "metro",
+      "output": "static",
+      "favicon": "./assets/images/favicon.png"
+    },
     "android": {
       "edgeToEdgeEnabled": true
     },
