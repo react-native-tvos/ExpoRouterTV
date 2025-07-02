@@ -14,7 +14,7 @@ import {
 } from 'react-native-reanimated';
 
 import { useColorScheme } from '@/hooks/useColorScheme';
-import { TVEventControl } from 'react-native';
+import { Platform, TVEventControl } from 'react-native';
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -34,7 +34,9 @@ export default function RootLayout() {
   useEffect(() => {
     if (loaded) {
       SplashScreen.hideAsync();
-      TVEventControl.enableTVMenuKey();
+      if (Platform.isTVOS) {
+        TVEventControl.enableTVMenuKey();
+      }
     }
   }, [loaded]);
 
