@@ -16,7 +16,7 @@ const videoSource =
 
 export default function VideoTest() {
   const styles = useVideoStyles();
-  const ref: any = useRef<VideoView>();
+  const ref: any = useRef<VideoView>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [videoStatus, setVideoStatus] = useState<VideoPlayerStatus>('idle');
   const [fractionComplete, setFractionComplete] = useState(0);
@@ -67,7 +67,9 @@ export default function VideoTest() {
             nativeControls
             contentFit="fill"
             showsTimecodes
-            allowsFullscreen
+            fullscreenOptions={{
+              enable: true,
+            }}
             allowsPictureInPicture
             contentPosition={{ dx: 0, dy: 0 }}
           />
