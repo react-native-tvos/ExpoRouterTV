@@ -85,7 +85,7 @@ export default function TabLayout() {
                 href: null,
               }
             : {
-                title: 'Video demo',
+                title: 'Video and audio',
                 tabBarButton,
                 tabBarLabelStyle: textStyles.default,
                 tabBarIcon: () => null,
