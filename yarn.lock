@@ -4242,6 +4242,11 @@ expo-asset@~12.0.2:
     "@expo/image-utils" "^0.8.2"
     expo-constants "~18.0.2"
 
+expo-audio@~1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/expo-audio/-/expo-audio-1.0.3.tgz#af31d7f424f6d4e8d90dc105cadabdc95deae749"
+  integrity sha512-cDFxVzNFXH8D0q24qirqi09AoGAoxfzIoZB/GFxqxYiVnnp6JECGSY9bEIvRXwfZDBpkUCauPzbm/PSbIB7olA==
+
 expo-build-properties@~1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/expo-build-properties/-/expo-build-properties-1.0.3.tgz#ecb5ca44b0e693e4a763d8b9fa90bd87f72a28ba"

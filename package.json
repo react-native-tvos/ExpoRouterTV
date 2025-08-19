@@ -20,6 +20,7 @@
     "@expo/vector-icons": "^14.1.0",
     "expo": "~54.0.0-preview.4",
     "expo-application": "~7.0.2",
+    "expo-audio": "~1.0.3",
     "expo-build-properties": "~1.0.3",
     "expo-constants": "~18.0.2",
     "expo-dev-client": "~6.0.3",
