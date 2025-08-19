@@ -17,18 +17,10 @@
           }
         }
       ],
-      [
-        "expo-build-properties",
-        {
-          "ios": {
-            "useFrameworks": "static"
-          }
-        }
-      ],
+      "expo-build-properties",
       "expo-router",
       "expo-font",
       "expo-video",
-      "react-native-bottom-tabs",
       "expo-web-browser"
     ],
     "experiments": {
@@ -54,10 +46,12 @@
       "favicon": "./assets/images/favicon.png"
     },
     "android": {
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "package": "com.douglowderexpo.ExpoRouterTV"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.douglowderexpo.ExpoRouterTV"
     }
   }
 }
