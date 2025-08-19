@@ -6,6 +6,7 @@ import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import VideoTest from '@/components/VideoTest';
+import AudioTest from '@/components/AudioTest';
 
 export default function VideoDemoScreen() {
   return (
@@ -20,7 +21,11 @@ export default function VideoDemoScreen() {
       }
     >
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Video demo</ThemedText>
+        <ThemedText type="subtitle">Audio demo</ThemedText>
+      </ThemedView>
+      <AudioTest />
+      <ThemedView style={styles.titleContainer}>
+        <ThemedText type="subtitle">Video demo</ThemedText>
       </ThemedView>
       <VideoTest />
     </ParallaxScrollView>

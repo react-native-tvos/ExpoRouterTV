@@ -1,15 +1,10 @@
 import { useVideoPlayer, VideoView, VideoPlayerStatus } from 'expo-video';
 import { useEffect, useRef, useState } from 'react';
-import {
-  Platform,
-  StyleSheet,
-  Text,
-  View,
-  Pressable,
-  Dimensions,
-} from 'react-native';
-import { scale, verticalScale } from 'react-native-size-matters';
+import { Platform, StyleSheet, View } from 'react-native';
+import { verticalScale } from 'react-native-size-matters';
 import { useInterval } from '@/hooks/useInterval';
+import { ProgressBar } from './ProgressBar';
+import { DemoButton } from './DemoButton';
 
 const videoSource =
   'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
@@ -79,7 +74,7 @@ export default function VideoTest() {
         <ProgressBar fractionComplete={fractionComplete} />
       </View>
       <View style={styles.buttons}>
-        <Button
+        <DemoButton
           title="Rewind"
           onPress={() => {
             player.currentTime = 0;
@@ -88,7 +83,7 @@ export default function VideoTest() {
             );
           }}
         />
-        <Button
+        <DemoButton
           title="Back 5 sec"
           onPress={() => {
             player.seekBy(-5);
@@ -97,7 +92,7 @@ export default function VideoTest() {
             );
           }}
         />
-        <Button
+        <DemoButton
           title={isPlaying ? 'Pause' : 'Play'}
           onPress={() => {
             if (player.playing) {
@@ -107,7 +102,7 @@ export default function VideoTest() {
             }
           }}
         />
-        <Button
+        <DemoButton
           title="Forward 5 sec"
           onPress={() => {
             player.seekBy(5);
@@ -116,7 +111,7 @@ export default function VideoTest() {
             );
           }}
         />
-        <Button
+        <DemoButton
           title="Full screen"
           onPress={() => {
             ref.current.enterFullscreen();
@@ -126,39 +121,6 @@ export default function VideoTest() {
     </View>
   );
 }
-
-const ProgressBar = (props: any) => {
-  const styles = useVideoStyles();
-  const progressBarStyles = {
-    container: styles.progressContainer,
-    left: [styles.progressLeft, { flex: props?.fractionComplete || 0.0 }],
-    right: [
-      styles.progressRight,
-      { flex: 1.0 - props?.fractionComplete || 1.0 },
-    ],
-  };
-  return (
-    <View style={progressBarStyles.container}>
-      <View style={progressBarStyles.left} />
-      <View style={progressBarStyles.right} />
-    </View>
-  );
-};
-
-const Button = (props: { title: string; onPress: () => void }) => {
-  const styles = useVideoStyles();
-  return (
-    <Pressable
-      onPress={() => props.onPress()}
-      style={({ pressed, focused }) => [
-        styles.button,
-        pressed || focused ? { backgroundColor: 'blue' } : {},
-      ]}
-    >
-      <Text style={styles.buttonText}>{props.title}</Text>
-    </Pressable>
-  );
-};
 
 const useVideoStyles = () => {
   const vidHeight = verticalScale(200);
@@ -180,33 +142,6 @@ const useVideoStyles = () => {
     buttons: {
       justifyContent: 'center',
       alignItems: Platform.isTV ? 'flex-start' : 'center',
-    },
-    button: {
-      backgroundColor: 'darkblue',
-      margin: scale(5),
-      borderRadius: scale(2),
-      padding: scale(5),
-    },
-    buttonText: {
-      color: 'white',
-      fontSize: scale(8),
-    },
-    progressContainer: {
-      flexDirection: 'row',
-      width: vidWidth,
-      height: scale(5),
-      margin: 0,
-    },
-    progressLeft: {
-      backgroundColor: 'blue',
-      borderTopRightRadius: scale(5),
-      borderBottomRightRadius: scale(5),
-      flexDirection: 'row',
-      height: '100%',
-    },
-    progressRight: {
-      flexDirection: 'row',
-      height: '100%',
     },
   });
 };
