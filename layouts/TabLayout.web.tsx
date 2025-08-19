@@ -65,19 +65,13 @@ export default function TabLayout() {
       <Tabs.Screen
         name="tv_focus"
         options={{
-          title: 'TV event demo',
-          tabBarButton,
-          tabBarLabelStyle: textStyles.default,
-          tabBarIcon: () => null,
+          href: null,
         }}
       />
       <Tabs.Screen
         name="video"
         options={{
-          title: 'Video demo',
-          tabBarButton,
-          tabBarLabelStyle: textStyles.default,
-          tabBarIcon: () => null,
+          href: null,
         }}
       />
     </Tabs>
