@@ -47,12 +47,10 @@
       "favicon": "./assets/images/favicon.png"
     },
     "android": {
-      "edgeToEdgeEnabled": true,
-      "package": "com.douglowderexpo.ExpoRouterTV"
+      "edgeToEdgeEnabled": true
     },
     "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "com.douglowderexpo.ExpoRouterTV"
+      "supportsTablet": true
     }
   }
 }
