@@ -13,7 +13,7 @@ export default function TabLayout() {
   const colorScheme = useColorScheme();
   const textStyles = useTextStyles();
 
-  const tabBarButton = (props: BottomTabBarButtonProps) => {
+  const tabBarButton = (props: any) => {
     const style: any = props.style ?? {};
     return (
       <Pressable
@@ -64,15 +64,33 @@ export default function TabLayout() {
       />
       <Tabs.Screen
         name="tv_focus"
-        options={{
-          href: null,
-        }}
+        options={
+          Platform.OS === 'web'
+            ? {
+                href: null,
+              }
+            : {
+                title: 'TV demo',
+                tabBarButton,
+                tabBarLabelStyle: textStyles.default,
+                tabBarIcon: () => null,
+              }
+        }
       />
       <Tabs.Screen
         name="video"
-        options={{
-          href: null,
-        }}
+        options={
+          Platform.OS === 'web'
+            ? {
+                href: null,
+              }
+            : {
+                title: 'Video and audio',
+                tabBarButton,
+                tabBarLabelStyle: textStyles.default,
+                tabBarIcon: () => null,
+              }
+        }
       />
     </Tabs>
   );

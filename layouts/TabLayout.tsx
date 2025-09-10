@@ -1,66 +1,30 @@
-import React from 'react';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
-import { withLayoutContext } from 'expo-router';
-import { createNativeBottomTabNavigator } from '@bottom-tabs/react-navigation';
+import { NativeTabs, Label, Icon } from 'expo-router/unstable-native-tabs';
 import { Platform } from 'react-native';
 
-export const Tabs = withLayoutContext(
-  createNativeBottomTabNavigator().Navigator,
-);
+import WebTabLayout from './TabLayout.web';
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
-  const colors = Colors[colorScheme ?? 'light'];
+  if (Platform.OS === 'android' && Platform.isTV) {
+    return <WebTabLayout />;
+  }
   return (
-    <Tabs
-      tabBarActiveTintColor={colors.tabIconSelected}
-      tabBarInactiveTintColor={colors.tabIconDefault}
-      tabBarStyle={{ backgroundColor: colors.background }}
-      rippleColor={colors.tint}
-      translucent
-      labeled={true}
-    >
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Home',
-          tabBarIcon: () =>
-            Platform.OS === 'android'
-              ? require('@/assets/bar_icons/home.png')
-              : null,
-        }}
-      />
-      <Tabs.Screen
-        name="explore"
-        options={{
-          title: 'Explore',
-          tabBarIcon: () =>
-            Platform.OS === 'android'
-              ? require('@/assets/bar_icons/code.png')
-              : null,
-        }}
-      />
-      <Tabs.Screen
-        name="tv_focus"
-        options={{
-          title: 'TV event demo',
-          tabBarIcon: () =>
-            Platform.OS === 'android'
-              ? require('@/assets/bar_icons/tv.png')
-              : null,
-        }}
-      />
-      <Tabs.Screen
-        name="video"
-        options={{
-          title: 'Video demo',
-          tabBarIcon: () =>
-            Platform.OS === 'android'
-              ? require('@/assets/bar_icons/video.png')
-              : null,
-        }}
-      />
-    </Tabs>
+    <NativeTabs>
+      <NativeTabs.Trigger name="index">
+        <Label>Home</Label>
+        <Icon sf="house" />
+      </NativeTabs.Trigger>
+      <NativeTabs.Trigger name="explore">
+        <Label>Explore</Label>
+        <Icon sf="atom" />
+      </NativeTabs.Trigger>
+      <NativeTabs.Trigger name="tv_focus">
+        <Label>TV demo</Label>
+        <Icon sf="tv.fill" />
+      </NativeTabs.Trigger>
+      <NativeTabs.Trigger name="video">
+        <Label>Video and audio</Label>
+        <Icon sf="video" />
+      </NativeTabs.Trigger>
+    </NativeTabs>
   );
 }
