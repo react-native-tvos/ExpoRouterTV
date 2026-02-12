@@ -3514,6 +3514,15 @@ expo-audio@~55.0.5:
   resolved "https://registry.yarnpkg.com/expo-audio/-/expo-audio-55.0.5.tgz#06512720808ac7300668fe9481b661cd93624d08"
   integrity sha512-B2UpahrjHDSi4BPP9rwZIDm1aNBzZ+KwVj09nIoQo2XC5ng2DuHBUFZF5cISX7gmUjS2HhsXtV5/CvKJLUt+6g==
 
+expo-build-properties@~55.0.6:
+  version "55.0.6"
+  resolved "https://registry.yarnpkg.com/expo-build-properties/-/expo-build-properties-55.0.6.tgz#fcda16a8c440e8e8bf4d3ddf3611c28838ce2d62"
+  integrity sha512-DfNRMAOGK3a2yao5RmCgNIz4bvCBFS8uHBHwYbd6RZos0n3Qqs96/l+Y9XMWJ/j7xVlXrTacw2wwwstqBGbwYA==
+  dependencies:
+    "@expo/schema-utils" "^55.0.2"
+    resolve-from "^5.0.0"
+    semver "^7.6.0"
+
 expo-constants@~55.0.4:
   version "55.0.4"
   resolved "https://registry.yarnpkg.com/expo-constants/-/expo-constants-55.0.4.tgz#49a4dd4a75024cec65705fe3d7b8acae25a8805c"
@@ -3587,6 +3596,11 @@ expo-keep-awake@~55.0.2:
   version "55.0.2"
   resolved "https://registry.yarnpkg.com/expo-keep-awake/-/expo-keep-awake-55.0.2.tgz#e7637231ebd4aef008ffe49df53df47317796862"
   integrity sha512-yxmmu0toMsszQN9ro8XuljicumudT4QwXiF7kswlDg5/48Y2HPfopod+8mOrIf7+UDUv99u6yH8NgSfWf0u+IA==
+
+expo-linear-gradient@~55.0.5:
+  version "55.0.5"
+  resolved "https://registry.yarnpkg.com/expo-linear-gradient/-/expo-linear-gradient-55.0.5.tgz#b056627a59aa17e98d1a679a1ba648ade3ef4f53"
+  integrity sha512-zesU+u1/chAFCq+hYtV1xy/5XeKbDWTytOrvJlI3cfxUXV3Ezm9hP3xV6iCzbc72a5ROJYyXLAvMuoM4Pl9ZOg==
 
 expo-linking@~55.0.4:
   version "55.0.4"
