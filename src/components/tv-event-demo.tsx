@@ -165,10 +165,11 @@ const TouchableHighlightButton = (props: {
 }) => {
   const styles = useDemoStyles();
   const theme = useTheme();
-  const underlayColor = theme.tint;
+  const underlayColor = theme.text;
 
   return (
     <TouchableHighlight
+      style={styles.touchableHighlight}
       underlayColor={underlayColor}
       onFocus={(event) => props.log(`${props.title} onFocus`)}
       onBlur={(event) => props.log(`${props.title} onBlur`)}
@@ -176,7 +177,10 @@ const TouchableHighlightButton = (props: {
       onPressOut={() => props.log(`${props.title} onPressOut`)}
       onLongPress={() => props.log(`${props.title} onLongPress`)}
     >
-      <LinearGradient colors={['#3c9ffe', '#0274df']} style={styles.pressable}>
+      <LinearGradient
+        colors={['#3c9ffe', '#0274df']}
+        style={styles.touchableHighlightGradient}
+      >
         <ThemedText style={styles.pressableText}>{props.title}</ThemedText>
       </LinearGradient>
     </TouchableHighlight>
@@ -230,6 +234,15 @@ const useDemoStyles = function () {
       lineHeight: spacing.two * 1.5,
       alignSelf: 'flex-start',
       justifyContent: 'flex-start',
+    },
+    touchableHighlight: {
+      borderRadius: spacing.three,
+      margin: spacing.two,
+    },
+    touchableHighlightGradient: {
+      margin: 0,
+      borderRadius: spacing.three,
+      padding: spacing.one * 1.5,
     },
     pressable: {
       borderRadius: spacing.three,
