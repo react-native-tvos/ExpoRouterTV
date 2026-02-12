@@ -1,4 +1,4 @@
-import { useAnimatedIconStyles } from './use-animated-styles';
+import { useAnimatedIconStyles } from '../hooks/use-animated-styles';
 import { Image } from 'expo-image';
 import { useState } from 'react';
 import { Dimensions, View } from 'react-native';

@@ -7,6 +7,7 @@ import { ProgressBar } from '@/components/progress-bar';
 import { DemoButton } from '@/components/demo-button';
 import { useScreenDimensions } from '@/hooks/use-screen-dimensions';
 import { videoDimensions } from '@/constants/video-dimensions';
+import { ThemedView } from './themed-view';
 
 const videoSource =
   'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
@@ -54,8 +55,8 @@ export default function VideoTest() {
   }, 1000);
 
   return (
-    <View style={styles.container}>
-      <View style={styles.videoStyle}>
+    <ThemedView style={styles.container}>
+      <ThemedView style={styles.videoStyle}>
         {videoStatus === 'readyToPlay' || Platform.OS === 'android' ? (
           <VideoView
             ref={ref}
@@ -74,8 +75,8 @@ export default function VideoTest() {
           <View style={styles.videoStyle} />
         )}
         <ProgressBar fractionComplete={fractionComplete} />
-      </View>
-      <View style={styles.buttons}>
+      </ThemedView>
+      <ThemedView style={styles.buttons}>
         <DemoButton
           title="Rewind"
           onPress={() => {
@@ -119,8 +120,8 @@ export default function VideoTest() {
             ref.current.enterFullscreen();
           }}
         />
-      </View>
-    </View>
+      </ThemedView>
+    </ThemedView>
   );
 }
 
@@ -151,6 +152,7 @@ const useVideoStyles = () => {
       flexDirection: landscape ? 'column' : 'row',
       justifyContent: 'center',
       alignItems: landscape ? 'flex-end' : 'flex-start',
+      width: width * 0.15,
     },
   });
 };

@@ -13,9 +13,11 @@ import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { useScreenDimensions } from '@/hooks/use-screen-dimensions';
 import { useTheme } from '@/hooks/use-theme';
+import { LinearGradient } from 'expo-linear-gradient';
 
 const useTVEventHandler = Platform.isTV
-  ? require('react-native').useTVEventHandler
+  ? // eslint-disable-next-line @typescript-eslint/no-require-imports
+    require('react-native').useTVEventHandler
   : (_: any) => {};
 
 /**
@@ -109,23 +111,26 @@ const PressableButton = (props: {
       onPressIn={() => props.log(`${props.title} onPressIn`)}
       onPressOut={() => props.log(`${props.title} onPressOut`)}
       onLongPress={() => props.log(`${props.title} onLongPress`)}
-      style={({ pressed, focused, hovered }) =>
-        pressed || focused || hovered
-          ? { ...styles.pressable, ...styles.pressableFocused }
-          : styles.pressable
-      }
     >
       {({ focused, hovered, pressed }) => {
         return (
-          <ThemedText style={styles.pressableText}>
-            {pressed
-              ? `${props.title} pressed`
-              : focused
-                ? `${props.title} focused`
-                : hovered
-                  ? `${props.title} hovered`
-                  : props.title}
-          </ThemedText>
+          <LinearGradient
+            colors={['#3c9ffe', '#0274df']}
+            style={[
+              styles.pressable,
+              (focused || hovered || pressed) && styles.pressableFocused,
+            ]}
+          >
+            <ThemedText style={styles.pressableText}>
+              {pressed
+                ? `${props.title} pressed`
+                : focused
+                  ? `${props.title} focused`
+                  : hovered
+                    ? `${props.title} hovered`
+                    : props.title}
+            </ThemedText>
+          </LinearGradient>
         );
       }}
     </Pressable>
@@ -141,14 +146,15 @@ const TouchableOpacityButton = (props: {
   return (
     <TouchableOpacity
       activeOpacity={0.6}
-      style={styles.pressable}
       onFocus={() => props.log(`${props.title} onFocus`)}
       onBlur={() => props.log(`${props.title} onBlur`)}
       onPressIn={() => props.log(`${props.title} onPressIn`)}
       onPressOut={() => props.log(`${props.title} onPressOut`)}
       onLongPress={() => props.log(`${props.title} onLongPress`)}
     >
-      <ThemedText style={styles.pressableText}>{props.title}</ThemedText>
+      <LinearGradient colors={['#3c9ffe', '#0274df']} style={styles.pressable}>
+        <ThemedText style={styles.pressableText}>{props.title}</ThemedText>
+      </LinearGradient>
     </TouchableOpacity>
   );
 };
@@ -163,7 +169,6 @@ const TouchableHighlightButton = (props: {
 
   return (
     <TouchableHighlight
-      style={styles.pressable}
       underlayColor={underlayColor}
       onFocus={(event) => props.log(`${props.title} onFocus`)}
       onBlur={(event) => props.log(`${props.title} onBlur`)}
@@ -171,7 +176,9 @@ const TouchableHighlightButton = (props: {
       onPressOut={() => props.log(`${props.title} onPressOut`)}
       onLongPress={() => props.log(`${props.title} onLongPress`)}
     >
-      <ThemedText style={styles.pressableText}>{props.title}</ThemedText>
+      <LinearGradient colors={['#3c9ffe', '#0274df']} style={styles.pressable}>
+        <ThemedText style={styles.pressableText}>{props.title}</ThemedText>
+      </LinearGradient>
     </TouchableHighlight>
   );
 };
@@ -200,10 +207,7 @@ const TouchableNativeFeedbackButton = (props: {
 const useDemoStyles = function () {
   const { height, width, spacing } = useScreenDimensions();
   const theme = useTheme();
-  const highlightColor = theme.tint;
   const backgroundColor = theme.background;
-  const tintColor = theme.tint;
-  const textColor = theme.text;
   return StyleSheet.create({
     container: {
       flex: 1,
@@ -228,15 +232,12 @@ const useDemoStyles = function () {
       justifyContent: 'flex-start',
     },
     pressable: {
-      borderColor: highlightColor,
-      backgroundColor: textColor,
-      borderWidth: 1,
       borderRadius: spacing.three,
       margin: spacing.two,
       padding: spacing.one * 1.5,
     },
     pressableFocused: {
-      backgroundColor: tintColor,
+      opacity: 0.5,
     },
     pressableText: {
       color: backgroundColor,

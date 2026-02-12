@@ -41,7 +41,7 @@ const useProgressBarStyles = () => {
       margin: 0,
     },
     progressLeft: {
-      backgroundColor: 'blue',
+      backgroundColor: '#3c9ffe',
       borderTopRightRadius: scale * 5,
       borderBottomRightRadius: scale * 5,
       flexDirection: 'row',

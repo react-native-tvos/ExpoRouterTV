@@ -5,7 +5,7 @@ import {
   useAudioPlayer,
   useAudioPlayerStatus,
 } from 'expo-audio';
-import { Platform, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 import { DemoButton } from '@/components/demo-button';
 import {
@@ -14,6 +14,7 @@ import {
 } from '@/components/progress-bar';
 import { useScreenDimensions } from '@/hooks/use-screen-dimensions';
 import { videoDimensions } from '@/constants/video-dimensions';
+import { useTheme } from '@/hooks/use-theme';
 
 const source: AudioSource =
   require('@/assets/audio/paza-moduless.mp3') as AudioSource;
@@ -55,6 +56,7 @@ export default function App() {
 
 const useAudioStyles = () => {
   const { scale, width, height, landscape } = useScreenDimensions();
+  const theme = useTheme();
   const { videoWidth } = videoDimensions({ width, height });
   return StyleSheet.create({
     container: {
@@ -67,7 +69,7 @@ const useAudioStyles = () => {
     },
     barContainer: {
       borderWidth: scale,
-      borderColor: 'black',
+      borderColor: theme.textSecondary,
       width: videoWidth,
       margin: scale * 10,
     },

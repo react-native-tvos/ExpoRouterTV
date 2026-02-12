@@ -11,7 +11,7 @@ import { useTheme } from '@/hooks/use-theme';
 export default function FocusDemoScreen() {
   const styles = useFocusDemoScreenStyles();
   const theme = useTheme();
-  const { spacing, width } = useScreenDimensions();
+  const { spacing } = useScreenDimensions();
   const contentPlatformStyle = {
     paddingTop: spacing.six + spacing.four,
     paddingBottom: spacing.four,
@@ -36,20 +36,22 @@ export default function FocusDemoScreen() {
         </ThemedText>
         <Collapsible title="How it works" style={{ width: '100%' }}>
           <ThemedText>
-            • On TV platforms, these components have "onFocus()" and "onBlur()"
-            props, in addition to the usual "onPress()". These can be used to
-            modify the style of the component when it is navigated to or
-            navigated away from by the TV focus engine.
+            • On TV platforms, these components have &quot;onFocus()&quot; and
+            &quot;onBlur()&quot; props, in addition to the usual
+            &quot;onPress()&quot;. These can be used to modify the style of the
+            component when it is navigated to or navigated away from by the TV
+            focus engine.
           </ThemedText>
           <ThemedText>
             • On web, Pressable has the above handlers, and also has
-            "onHoverIn()", and "onHoverOut()" props.
+            &quot;onHoverIn()&quot;, and &quot;onHoverOut()&quot; props.
           </ThemedText>
           <ThemedText>
             • In addition, the functional forms of the Pressable style prop and
-            the Pressable content, which in React Native core take a "pressed"
-            boolean parameter, can also take "focused" as a parameter on TV
-            platforms, and "hovered" as a parameter on web.
+            the Pressable content, which in React Native core take a
+            &quot;pressed&quot; boolean parameter, can also take
+            &quot;focused&quot; as a parameter on TV platforms, and
+            &quot;hovered&quot; as a parameter on web.
           </ThemedText>
           <ThemedText>
             • As you use the arrow keys to navigate around the screen, the demo
@@ -57,9 +59,9 @@ export default function FocusDemoScreen() {
           </ThemedText>
           <ThemedText>
             In RNTV 0.76 and above, `Pressable` and `Touchable` components
-            receive "focus", "blur", "pressIn", and "pressOut" events directly
-            from native code, for improved performance when navigating around
-            the screen.
+            receive &quot;focus&quot;, &quot;blur&quot;, &quot;pressIn&quot;,
+            and &quot;pressOut&quot; events directly from native code, for
+            improved performance when navigating around the screen.
           </ThemedText>
         </Collapsible>
       </TVFocusGuideView>
