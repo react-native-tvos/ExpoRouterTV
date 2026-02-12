@@ -253,7 +253,7 @@ const useDemoStyles = function () {
       opacity: 0.5,
     },
     pressableText: {
-      color: backgroundColor,
+      color: 'white',
     },
   });
 };
