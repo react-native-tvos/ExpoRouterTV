@@ -137,7 +137,6 @@ const useVideoStyles = () => {
       flexDirection: landscape ? 'row' : 'column',
       justifyContent: 'center',
       alignItems: 'center',
-      marginBottom: 10 * scale,
       width: '90%',
     },
     videoStyle: {

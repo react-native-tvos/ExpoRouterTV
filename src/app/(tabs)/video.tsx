@@ -26,6 +26,7 @@ export default function VideoDemoScreen() {
       ]}
     >
       <TVFocusGuideView autoFocus style={styles.innerContainer}>
+        <ThemedView style={{ height: spacing.six * 2 }} />
         <ThemedView style={styles.titleContainer}>
           <ThemedText type="subtitle">Audio demo</ThemedText>
           <AudioTest />
@@ -34,6 +35,7 @@ export default function VideoDemoScreen() {
           <ThemedText type="subtitle">Video demo</ThemedText>
           <VideoTest />
         </ThemedView>
+        <ThemedView style={{ flex: 1 }} />
       </TVFocusGuideView>
     </ThemedView>
   );
