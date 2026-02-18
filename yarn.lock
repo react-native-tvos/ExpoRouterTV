@@ -3506,11 +3506,6 @@ expo-asset@~55.0.5:
     "@expo/image-utils" "^0.8.12"
     expo-constants "~55.0.5"
 
-expo-audio@~55.0.6:
-  version "55.0.6"
-  resolved "https://registry.yarnpkg.com/expo-audio/-/expo-audio-55.0.6.tgz#c22019b69e85ebfd07481842d34c93360e9a171d"
-  integrity sha512-77iCCKbkBGzSLPzJW50o1h0Hhz1rwZqTl08+DRvERSsjhrTlx9PHp8Fz3H4+t6JckKO+6WAI+GdZqQEoeF7CKQ==
-
 expo-build-properties@~55.0.7:
   version "55.0.7"
   resolved "https://registry.yarnpkg.com/expo-build-properties/-/expo-build-properties-55.0.7.tgz#0ae1cb7feaf864eb7b4c936d61920c2c1818c1e8"
@@ -3711,11 +3706,6 @@ expo-updates-interface@~55.1.2:
   version "55.1.2"
   resolved "https://registry.yarnpkg.com/expo-updates-interface/-/expo-updates-interface-55.1.2.tgz#8442061a52ac2a7d07bb08b6486328b1d1903b33"
   integrity sha512-NkKburr7sdwepLuxI2JNk/ePUpxhTCX/DTx6BvEUZcTM+S7c2OraljRCUld+6lW4XoRrry7hhygyWQtJGQjHMA==
-
-expo-video@~55.0.6:
-  version "55.0.6"
-  resolved "https://registry.yarnpkg.com/expo-video/-/expo-video-55.0.6.tgz#af42348253691e27c5cb1285b47029820a446eae"
-  integrity sha512-Lxb67nRHLPFz/f7YPFcK/ikyHk2pNhPw/0xEdobi2bIreX2hVsuH6U069ecY4zxVUiFRxYhxRo3br1w3mRm1cA==
 
 expo-web-browser@~55.0.6:
   version "55.0.6"

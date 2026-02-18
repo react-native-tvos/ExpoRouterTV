@@ -38,9 +38,6 @@ export default function AppTabs() {
           <TabTrigger name="tv_focus" href="/tv_focus" asChild>
             <TabButton>TV Demo</TabButton>
           </TabTrigger>
-          <TabTrigger name="video" href="/video" asChild>
-            <TabButton>Video</TabButton>
-          </TabTrigger>
         </CustomTabList>
       </TabList>
     </Tabs>

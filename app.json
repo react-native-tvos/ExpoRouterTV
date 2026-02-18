@@ -27,11 +27,9 @@
           }
         }
       ],
-      "expo-audio",
       "expo-build-properties",
       "expo-router",
       "expo-font",
-      "expo-video",
       "expo-web-browser"
     ],
     "experiments": {
