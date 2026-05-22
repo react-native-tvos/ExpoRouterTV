@@ -1,9 +1,9 @@
 import {
   DarkTheme,
   DefaultTheme,
+  Stack,
   ThemeProvider,
-} from '@react-navigation/native';
-import { Stack } from 'expo-router';
+} from 'expo-router';
 import React from 'react';
 import { useColorScheme } from 'react-native';
 
