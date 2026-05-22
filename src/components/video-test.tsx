@@ -9,8 +9,17 @@ import { useScreenDimensions } from '@/hooks/use-screen-dimensions';
 import { videoDimensions } from '@/constants/video-dimensions';
 import { ThemedView } from './themed-view';
 
-const videoSource =
-  'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
+const appleVideoSource =
+  'https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4';
+const androidVideoSource = 'https://samplelib.com/mp4/sample-30s.mp4';
+
+const videoSource = {
+  android: androidVideoSource,
+  ios: appleVideoSource,
+  web: appleVideoSource,
+  windows: androidVideoSource,
+  macos: appleVideoSource,
+};
 
 export default function VideoTest() {
   const styles = useVideoStyles();
@@ -26,7 +35,7 @@ export default function VideoTest() {
     return duration !== undefined ? (position ?? 0) / duration : 0;
   };
 
-  const player = useVideoPlayer(videoSource, (player) => {
+  const player = useVideoPlayer(videoSource[`${Platform.OS}`], (player) => {
     player.addListener('statusChange', (payload) => {
       setVideoStatus(payload.status);
       console.log(`video status = ${payload.status}`);
