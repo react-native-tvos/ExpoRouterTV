@@ -2,6 +2,16 @@
   "expo": {
     "plugins": [
       [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#208AEF",
+          "android": {
+            "image": "./assets/images/splash-icon.png",
+            "imageWidth": 76
+          }
+        }
+      ],
+      [
         "@react-native-tvos/config-tv",
         {
           "androidTVBanner": "./assets/tv_icons/icon-400x240.png",
@@ -17,40 +27,65 @@
           }
         }
       ],
+      "expo-audio",
       "expo-build-properties",
       "expo-router",
       "expo-font",
       "expo-video",
       "expo-web-browser",
-      "expo-audio"
+      "expo-image",
+      "expo-status-bar"
     ],
     "experiments": {
-      "typedRoutes": true
+      "typedRoutes": true,
+      "reactCompiler": true
     },
     "name": "ExpoRouterTV",
     "slug": "ExpoRouterTV",
     "scheme": "exporoutertv",
-    "icon": "./assets/tv_icons/icon-760x760.png",
-    "newArchEnabled": true,
-    "version": "1.0.0",
     "extra": {
-      "router": {
-        "origin": false
-      }
+      "router": {}
     },
-    "splash": {
-      "image": "./assets/tv_icons/icon-1280x768.png"
+    "runtimeVersion": {
+      "policy": "appVersion"
     },
-    "web": {
-      "bundler": "metro",
-      "output": "static",
-      "favicon": "./assets/images/favicon.png"
-    },
-    "android": {
-      "edgeToEdgeEnabled": true
+    "icon": "./assets/images/icon.png",
+    "userInterfaceStyle": "automatic",
+    "experiments": {
+      "typedRoutes": true,
+      "reactCompiler": true
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "splash": {
+        "image": "./assets/images/splash.png"
+      },
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      },
+      "icon": "./assets/expo.icon"
+    },
+    "android": {
+      "splash": {
+        "image": "./assets/images/splash.png"
+      },
+      "adaptiveIcon": {
+        "backgroundColor": "#E6F4FE",
+        "foregroundImage": "./assets/images/android-icon-foreground.png",
+        "backgroundImage": "./assets/images/android-icon-background.png",
+        "monochromeImage": "./assets/images/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false,
+      "permissions": [
+        "android.permission.RECORD_AUDIO",
+        "android.permission.MODIFY_AUDIO_SETTINGS",
+        "android.permission.FOREGROUND_SERVICE",
+        "android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK"
+      ]
+    },
+    "web": {
+      "output": "static",
+      "favicon": "./assets/images/favicon.png"
     }
   }
 }
